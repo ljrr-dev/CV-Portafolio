@@ -1,0 +1,266 @@
+::: {.divider}
+:::
+title: ""
+format:
+  html:
+    page-layout: custom
+::: {.divider}
+:::
+
+:::: {.cv-wrapper}
+
+::: {.sidebar}
+
+# ![](avatar.jpg){.avatar}
+
+# Luis Jorge Ruiz Reyes {.sidebar-name}
+### Desarrollador de Software & Analista de Datos {.sidebar-title}
+
+::: {.divider}
+:::
+
+## Contacto {.section-label}
+
+::: {.contact-item}
+📧 luisjruizreyes@gmail.com
+:::
+::: {.contact-item}
+📧 luisjruiz@ciencias.unam.mx
+:::
+::: {.contact-item}
+🐙 [github.com/ljrr-dev](https://github.com/ljrr-dev)
+:::
+::: {.contact-item}
+📍 Ciudad de México, MX
+:::
+
+::: {.divider}
+:::
+## Lenguajes & Habilidades Tecnológicas {.section-label}
+
+::: {.skill-block}
+**Python**
+
+::: {.skill-bar}
+
+::: {.skill-fill .y4}
+:::
+
+:::
+
+::: {.frameworks}
+FastAPI · Pandas · NumPy · Plotly · Flask · Jupyter · Quarto
+:::
+:::
+
+::: {.skill-block}
+**Java**
+
+::: {.skill-bar}
+
+::: {.skill-fill .y3}
+:::
+
+:::
+
+::: {.frameworks}
+Spring Boot · Hibernate · Maven · OOP · Functional
+:::
+
+:::
+
+::: {.skill-block}
+**SQL**
+
+::: {.skill-bar}
+
+::: {.skill-fill .y3}
+:::
+
+:::
+
+::: {.frameworks}
+PostgreSQL · SQLite · MySQL
+:::
+:::
+
+::: {.skill-block}
+**JavaScript**
+
+::: {.skill-bar}
+
+::: {.skill-fill .y2}
+:::
+
+:::
+
+::: {.frameworks}
+React · Node.js · Angular
+:::
+:::
+
+::: {.skill-block}
+**Bash / Linux**
+
+::: {.skill-bar}
+
+::: {.skill-fill .y4}
+:::
+
+:::
+
+::: {.frameworks}
+CLI tools · scripting · Docker · WSL
+:::
+
+:::
+
+::: {.skill-block}
+**DevOps**
+
+::: {.skill-bar}
+
+::: {.skill-fill .y2}
+:::
+
+:::
+
+::: {.frameworks}
+Docker · Kubernetes · CI/CD pipelines · Bamboo · Gitlab
+:::
+
+:::
+
+::: {.skill-block}
+**Test Driven Development**
+
+::: {.skill-bar}
+
+::: {.skill-fill .y2}
+:::
+
+:::
+
+::: {.frameworks}
+Junit · Mockito · CI/CD pipelines 
+:::
+
+:::
+
+
+::: {.divider}
+:::
+
+## Herramientas {.section-label}
+
+::: {.tag-cloud}
+[Docker]{.tag} [Kubernetes]{.tag} [Git]{.tag} 
+[Postman]{.tag} [SOAPUI]{.tag} [CURL]{.tag}
+[Quarto]{.tag} [Jupyter]{.tag}
+[VSCodium]{.tag} [Linux]{.tag}  [IntelliJ]{.tag}
+[OWASP]{.tag} [SNYK]{.tag} [Blackduck/Synopsys]{.tag}
+
+
+:::
+
+:::
+
+::: {.main-content}
+
+## Resumen {.cv-section}
+
+::: {.summary-block}
+Desarrollador con 4 años de experiencia, durante mi trabajo como backend he trabajado con sistemas banacarios y financieros. Mis fortalezas son los microservicios con SpringBoot, tanto crearlos desde cero como trabajar sobre proyectos construidos remediando vulnerabilidades, haciendo scaneos de seguridad con DAST y SAST y actualizaciones de bibliotecas y versiones de Java.
+En tanto al frontend he trabajado en dashboard con React y Angular así como PHP.
+Mi experiencia incluye trabajar sobre ciclos de vida complejo, pasando el desarrollo por ambientes de Dev, SIT, UAT, Performance y finalmente liberaciones productivas.
+:::
+
+::: {.divider}
+:::
+
+## Experiencia {.cv-section}
+
+::: {.job}
+### Backend Developer / Consultant {.job-title}
+**Capgemini** · Ago 2024 — Presente · CDMX {.job-meta}
+
+Desarrollo y evolución de microservicios bancarios en programas de modernización tecnológica, colaborando con equipos multidisciplinarios y áreas de negocio.
+
+**Ago 2024 — Nov 2025**
+
+- Migración de plataformas y evergreening de aplicaciones, asegurando estabilidad operativa y continuidad del servicio.
+- Remediación de vulnerabilidades y control de calidad de código integrados a pipelines CI/CD alineados a estándares corporativos.
+- Coordinación de desarrollo, pruebas y despliegue vía JIRA entre equipos distribuidos.
+- Desarrollo backend con Spring Framework aplicando criterios de mantenibilidad y escalabilidad.
+- Auditoría de código con Sonar, Snyk y Synopsis como soporte a decisiones técnicas y reducción de riesgos.
+
+**Nov 2025 — Actualidad**
+
+- Evaluación y ejecución de estrategias de homologación de ambientes productivos/pruebas y migración a nube, con impacto directo en costos y tiempos de despliegue.
+- Mejora de procesos CI/CD en múltiples entornos mediante Bamboo.
+- Análisis de arquitectura y acompañamiento en transformación digital considerando requerimientos técnicos y operativos.
+- Definición y seguimiento de planes de remediación de deuda técnica priorizados por impacto operativo.
+- Interlocución directa con equipos gerenciales y directivos, alineando objetivos de negocio con ejecución técnica.
+- Liderazgo del equipo de desarrollo, promoviendo colaboración, transferencia de conocimiento y mejora continua.
+:::
+
+::: {.job}
+### Investigación y Desarrollo de Software {.job-title}
+**Paso sin Miedo** · Ago 2023 — Jul 2024 · CDMX {.job-meta}
+
+Iniciativas de investigación aplicada y desarrollo orientadas a la adopción de nuevas tecnologías y mejora de capacidades técnicas.
+
+- Exploración y evaluación de enfoques, herramientas y arquitecturas considerando viabilidad técnica e impacto operativo.
+- Desarrollo de PoCs y prototipos funcionales para validar soluciones antes de su adopción en producción.
+- Análisis comparativo de tecnologías emergentes apoyando decisiones informadas en procesos de modernización.
+- Colaboración con equipos de desarrollo y arquitectura para transferencia de conocimiento e incorporación gradual de soluciones.
+- Documentación de hallazgos técnicos y recomendaciones, contribuyendo a la evolución de estándares internos.
+:::
+
+::: {.job}
+### Desarrollador Android & Full Stack {.job-title}
+**On Time Connect** · Jun 2023 — Jul 2024 · CDMX / Condado de Bexar, TX {.job-meta}
+
+- Despliegue en nube de aplicativos en VMs con Ubuntu y bases de datos SQL y NoSQL.
+- Implementación de funcionalidades frontend y backend en dashboard web con Angular y Node.js.
+:::
+
+::: {.divider}
+:::
+
+## Educación {.cv-section}
+
+::: {.edu}
+### Licenciatura en Matemáticas {.edu-title}
+**Facultad de Ciencias, UNAM** 
+
++100% de avance curricular · Titulación esperada 2026
+:::
+
+::: {.edu}
+### Máster en Data Science {.edu-title}
+**Nuclio Digital School** · Barcelona 
+:::
+
+::: {.edu}
+### Google Professional Cloud Architect (en curso, 60%) {.edu-title}
+**Google Cloud** 
+
+Badges obtenidos: Essential Cloud Infrastructure: Foundation · Cloud Fundamentals: Core Infrastructure
+:::
+
+::: {.edu}
+### Introduction to Cybersecurity {.edu-title}
+**Cisco** 
+:::
+
+::: {.edu}
+### Técnico en Urgencias Médicas Nivel Avanzado {.edu-title}
+**Certificación internacional** 
+
++12 certificados de validez internacional · CV relevante disponible bajo solicitud
+:::
+
+:::
+
+::::

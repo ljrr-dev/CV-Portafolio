@@ -1,0 +1,39 @@
+---
+title: "Sobre mí"
+format:
+  html:
+    page-layout: article
+---
+
+## Quién soy
+
+Espacio para una versión más larga y personal de tu historia.
+Puedes hablar de tu trayectoria, motivaciones, intereses técnicos,
+proyectos de los que estás orgulloso, etc.
+
+## Proyectos destacados
+
+### Nombre del Proyecto
+**Stack:** Python · Quarto · PostgreSQL
+
+Descripción del proyecto, qué problema resolvía, qué aprendiste.
+[Ver repositorio →](https://github.com/ljrr-dev)
+
+---
+
+### Otro Proyecto
+**Stack:** Java · Spring Boot · Kafka
+
+Descripción del proyecto.
+
+## Intereses técnicos
+
+- Arquitectura de sistemas distribuidos
+- Pipelines de datos y análisis exploratorio
+- Herramientas CLI y automatización en Linux
+- Visualización de datos interactiva
+
+## Idiomas
+
+- Español — nativo
+- Inglés — profesional
