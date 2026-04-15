@@ -143,9 +143,11 @@ body {
   animation: fillBar 1s ease forwards;
 }
 
+.y4 { --fill: 100%;}
 .y4 { --fill: 80%; }
-.y3 { --fill: 75%; }
-.y2 { --fill: 60%; }
+.y3 { --fill: 60%; }
+.y2 { --fill: 40%; }
+.y1 { --fill: 20%; }
 
 @keyframes fillBar {
   from { width: 0; }
