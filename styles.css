@@ -1,0 +1,311 @@
+/* ─── Fuentes ─────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap');
+
+/* ─── Variables ───────────────────────────────────────────── */
+:root {
+  --bg:        #0d1117;
+  --bg2:       #161b22;
+  --bg3:       #21262d;
+  --border:    #30363d;
+  --text:      #e6edf3;
+  --muted:     #8b949e;
+  --accent:    #58a6ff;
+  --accent2:   #3fb950;
+  --accent3:   #d29922;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --font-body: 'IBM Plex Sans', sans-serif;
+  --sidebar-w: 300px;
+}
+
+/* ─── Base ────────────────────────────────────────────────── */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* ocultar elementos de Quarto que no usamos */
+#quarto-header .navbar-brand-container { font-family: var(--font-mono); }
+.navbar { background: var(--bg2) !important; border-bottom: 1px solid var(--border); }
+.navbar-nav .nav-link { color: var(--muted) !important; font-family: var(--font-mono); font-size: 13px; }
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active { color: var(--accent) !important; }
+.navbar-brand { color: var(--text) !important; font-family: var(--font-mono); font-weight: 600; }
+.page-footer { background: var(--bg2) !important; border-top: 1px solid var(--border); color: var(--muted); font-family: var(--font-mono); font-size: 12px; }
+
+/* ─── CV Layout ───────────────────────────────────────────── */
+.cv-wrapper {
+  display: grid;
+  grid-template-columns: var(--sidebar-w) 1fr;
+  min-height: 100vh;
+  max-width: 1100px;
+  margin: 0 auto;
+  gap: 0;
+}
+
+/* ─── Sidebar ─────────────────────────────────────────────── */
+.sidebar {
+  background: var(--bg2);
+  border-right: 1px solid var(--border);
+  padding: 2.5rem 1.75rem;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  display: block;
+  margin-bottom: 1.25rem;
+  object-fit: cover;
+}
+
+.sidebar-name {
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.2rem;
+  border: none;
+}
+
+.sidebar-title {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+}
+
+.sidebar hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 1.25rem 0;
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.9rem;
+  border: none;
+  padding-bottom: 0;
+}
+
+/* ─── Contacto ────────────────────────────────────────────── */
+.contact-item {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+}
+.contact-item a { color: var(--muted); text-decoration: none; }
+.contact-item a:hover { color: var(--accent); }
+
+/* ─── Skill Bars ──────────────────────────────────────────── */
+.skill-block {
+  margin-bottom: 1.1rem;
+}
+.skill-block > strong {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text);
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.skill-bar {
+  background: var(--bg3);
+  border-radius: 3px;
+  height: 6px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-fill {
+  height: 100%;
+  width: var(--fill);
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  border-radius: 3px;
+  position: relative;
+  animation: fillBar 1s ease forwards;
+}
+
+.y4 { --fill: 80%; }
+.y3 { --fill: 75%; }
+.y2 { --fill: 60%; }
+
+@keyframes fillBar {
+  from { width: 0; }
+  to   { width: var(--fill); }
+}
+
+.frameworks {
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-top: 0.3rem;
+  font-family: var(--font-mono);
+}
+
+/* ─── Tags ────────────────────────────────────────────────── */
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.tag {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 3px;
+}
+
+/* ─── Main Content ────────────────────────────────────────── */
+.main-content {
+  padding: 3rem 3.5rem;
+  max-width: 760px;
+}
+
+.cv-section {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-top: 2.5rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.cv-section:first-child { margin-top: 0; }
+
+.summary-block {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  border-left: 3px solid var(--accent);
+  padding-left: 1.25rem;
+}
+
+/* ─── Jobs ────────────────────────────────────────────────── */
+.job, .edu {
+  margin-bottom: 1.75rem;
+  padding-left: 1rem;
+  border-left: 1px solid var(--border);
+}
+.job:hover, .edu:hover {
+  border-left-color: var(--accent);
+  transition: border-color 0.2s;
+}
+
+.job-title, .edu-title {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.15rem;
+}
+
+.job-meta, .edu-meta {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-bottom: 0.6rem;
+}
+
+.job ul, .main-content ul {
+  padding-left: 1.2rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+.job li { margin-bottom: 0.25rem; }
+
+/* ─── Demo page ───────────────────────────────────────────── */
+.demo-intro {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent2);
+  padding: 1rem 1.25rem;
+  border-radius: 4px;
+  color: var(--muted);
+  font-size: 0.88rem;
+  margin-bottom: 2rem;
+}
+
+/* ─── Article pages (demo, about) ────────────────────────── */
+#quarto-content article {
+  background: var(--bg);
+  color: var(--text);
+}
+
+h1.title {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--text);
+  font-size: 1.6rem;
+}
+
+p.subtitle { color: var(--muted); font-size: 0.9rem; }
+
+h2 {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+p { color: var(--muted); }
+
+a { color: var(--accent); }
+
+code {
+  background: var(--bg3);
+  color: var(--accent2);
+  font-family: var(--font-mono);
+  font-size: 0.82em;
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+}
+
+/* ─── Responsive ──────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .cv-wrapper {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    position: static;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .main-content {
+    padding: 2rem 1.5rem;
+  }
+}

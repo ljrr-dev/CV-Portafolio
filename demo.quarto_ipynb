@@ -1,0 +1,139 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Demo Analítica\"\n",
+        "subtitle: \"Análisis exploratorio con datos reales\"\n",
+        "format:\n",
+        "  html:\n",
+        "    page-layout: article\n",
+        "    code-fold: true\n",
+        "    code-tools: true\n",
+        "execute:\n",
+        "  echo: true\n",
+        "  warning: false\n",
+        "jupyter: python3\n",
+        "---\n",
+        "\n",
+        "::: {.demo-intro}\n",
+        "Esta página muestra un análisis de datos real usando Python.\n",
+        "El código está disponible — puedes desplegarlo con el botón `</> Code`.\n",
+        ":::\n",
+        "\n",
+        "## Dataset"
+      ],
+      "id": "f21b762c"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import pandas as pd\n",
+        "import plotly.express as px\n",
+        "import plotly.graph_objects as go\n",
+        "\n",
+        "# Reemplaza esto con tus datos reales\n",
+        "# Ejemplo: datos de indicadores ODS de World Bank vía wbgapi,\n",
+        "# o cualquier CSV que quieras dejar precargado en el repo.\n",
+        "\n",
+        "df = pd.DataFrame({\n",
+        "    \"año\": list(range(2015, 2024)),\n",
+        "    \"valor_a\": [10, 15, 13, 18, 22, 25, 21, 28, 30],\n",
+        "    \"valor_b\": [8,  12, 14, 17, 19, 23, 24, 26, 29],\n",
+        "})\n",
+        "\n",
+        "df.head()"
+      ],
+      "id": "6cdb267b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Tendencia temporal"
+      ],
+      "id": "f4c8ed07"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "fig = px.line(\n",
+        "    df,\n",
+        "    x=\"año\",\n",
+        "    y=[\"valor_a\", \"valor_b\"],\n",
+        "    labels={\"value\": \"Indicador\", \"año\": \"Año\", \"variable\": \"Serie\"},\n",
+        "    title=\"Evolución de indicadores — reemplaza con tus datos\",\n",
+        "    template=\"plotly_dark\",\n",
+        ")\n",
+        "fig.update_layout(\n",
+        "    font_family=\"'IBM Plex Mono', monospace\",\n",
+        "    plot_bgcolor=\"rgba(0,0,0,0)\",\n",
+        "    paper_bgcolor=\"rgba(0,0,0,0)\",\n",
+        ")\n",
+        "fig.show()"
+      ],
+      "id": "1de03b38",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Distribución"
+      ],
+      "id": "6ec01353"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "fig2 = px.scatter(\n",
+        "    df,\n",
+        "    x=\"valor_a\",\n",
+        "    y=\"valor_b\",\n",
+        "    size=\"valor_a\",\n",
+        "    color=\"año\",\n",
+        "    title=\"Relación entre variables\",\n",
+        "    template=\"plotly_dark\",\n",
+        ")\n",
+        "fig2.update_layout(\n",
+        "    plot_bgcolor=\"rgba(0,0,0,0)\",\n",
+        "    paper_bgcolor=\"rgba(0,0,0,0)\",\n",
+        ")\n",
+        "fig2.show()"
+      ],
+      "id": "6f3c6732",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "::: {.callout-note}\n",
+        "## Sobre esta demo\n",
+        "Los datos de ejemplo son placeholders. El análisis real puede conectar con\n",
+        "fuentes como World Bank (`wbgapi`), INEGI, o cualquier CSV en el repositorio.\n",
+        ":::"
+      ],
+      "id": "3130a102"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/home/lu/.var/app/com.vscodium.codium/data/python/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}
