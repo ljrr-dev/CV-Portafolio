@@ -1,4 +1,6 @@
-
+---
+title: ""
+---
 
 :::: {.cv-wrapper}
 
@@ -237,7 +239,7 @@ Experiencia en ciclos de vida completos: ambientes Dev, SIT, UAT, Performance y 
 
 - Desarrollo de dashboards con React en Arquitectura Whitelabel y Multitenant.
 - Integración de funcionalidades a servicios de encuestas en PHP.
-- Integración de mecanismos de Resilencia en microservicios con dependencias externas.
+- Integración de mecanismos de Resiliencia en microservicios con dependencias externas.
 - Integración de microservicios a Servicios de envío masivo (Twillio, Sendgrid, Infobip).
 - Generación de Backlog e identificación de vulnerabilidades con Análisis estático y Dinámico de Código
 
@@ -325,5 +327,25 @@ Badges obtenidos: Essential Cloud Infrastructure: Foundation · Cloud Fundamenta
 :::
 
 :::
+
+```{=html}
+<button id="theme-toggle" title="Cambiar tema">🌙</button>
+<script>
+  const btn = document.getElementById('theme-toggle');
+  btn.addEventListener('click', () => {
+    document.body.classList.toggle('light');
+    btn.textContent = document.body.classList.contains('light') ? '☀️' : '🌙';
+    btn.classList.remove('switching');
+    void btn.offsetWidth; // reflow para re-triggerear animación
+    btn.classList.add('switching');
+  });
+</script>
+```
+
+```{=html}
+<a id="download-btn" href="Luis_Jorge_Ruiz_Dev2026.pdf" download="Luis_Jorge_Ruiz_Dev2026.pdf" title="Descargar CV">
+  ⬇
+</a>
+```
 
 ::::
