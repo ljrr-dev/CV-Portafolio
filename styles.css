@@ -311,3 +311,142 @@ code {
     padding: 2rem 1.5rem;
   }
 }
+
+/* ─── Light theme ─────────────────────────────────────────── */
+body.light {
+  --bg:     #ffffff;
+  --bg2:    #f5f5f0;
+  --bg3:    #ebe9e0;
+  --border: #d4d0c8;
+  --text:   #1a1a1a;
+  --muted:  #4a4a4a;
+  --accent:  #c17d11;
+  --accent2: #7c3aed;
+  --accent3: #ea580c;
+}
+
+/* ─── Theme toggle button ─────────────────────────────────── */
+@property --angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes spin-border {
+  from { --angle: 0deg; }
+  to   { --angle: 360deg; }
+}
+
+@keyframes pulse-in {
+  0%   { transform: scale(0.8); opacity: 0; }
+  60%  { transform: scale(1.1); }
+  100% { transform: scale(1);   opacity: 1; }
+}
+
+#theme-toggle {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 999;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  background:
+    linear-gradient(var(--bg2), var(--bg2)) padding-box,
+    conic-gradient(from var(--angle), #58a6ff, #3fb950, #d29922, #58a6ff) border-box;
+  color: var(--text);
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: spin-border 3s linear infinite, pulse-in 0.4s ease forwards;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+body.light #theme-toggle {
+  background:
+    linear-gradient(var(--bg2), var(--bg2)) padding-box,
+    conic-gradient(from var(--angle), #c17d11, #7c3aed, #ea580c, #c17d11) border-box;
+}
+
+#theme-toggle:hover {
+  transform: scale(1.15);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+}
+
+#theme-toggle.switching {
+  animation: spin-border 3s linear infinite, pulse-in 0.3s ease forwards;
+}
+
+@media print {
+  #theme-toggle { display: none; }
+}
+
+/* ─── Print / PDF ─────────────────────────────────────────── */
+@media print {
+  #theme-toggle  { display: none; }
+  .navbar        { display: none; }
+  .page-footer   { display: none; }
+
+  body {
+    --bg:     #ffffff;
+    --bg2:    #f5f5f0;
+    --bg3:    #ebe9e0;
+    --border: #d4d0c8;
+    --text:   #1a1a1a;
+    --muted:  #4a4a4a;
+    --accent:  #c17d11;
+    --accent2: #7c3aed;
+    --accent3: #ea580c;
+  }
+
+  .cv-wrapper {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+  }
+
+  .sidebar {
+    position: static;
+    height: auto;
+  }
+}
+
+#download-btn {
+  position: fixed;
+  bottom: 5.5rem;
+  right: 2rem;
+  z-index: 999;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  background:
+    linear-gradient(var(--bg2), var(--bg2)) padding-box,
+    conic-gradient(from var(--angle), #58a6ff, #3fb950, #d29922, #58a6ff) border-box;
+  color: var(--text);
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  animation: spin-border 3s linear infinite;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease;
+}
+
+body.light #download-btn {
+  background:
+    linear-gradient(var(--bg2), var(--bg2)) padding-box,
+    conic-gradient(from var(--angle), #c17d11, #7c3aed, #ea580c, #c17d11) border-box;
+}
+
+#download-btn:hover {
+  transform: scale(1.15);
+}
+
+@media print {
+  #download-btn { display: none; }
+}
