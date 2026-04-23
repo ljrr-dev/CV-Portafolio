@@ -1,6 +1,5 @@
 project:
   type: website
-  output-dir: docs
 
 website:
   title: "Lu | Dev & Data"
@@ -13,6 +12,10 @@ website:
       - href: about.qmd
         text: About
     right:
+      - href: index.qmd
+        text: ES
+      - href: index-en.qmd
+        text: EN
       - icon: github
         href: https://github.com/ljrr-dev
   page-footer:
@@ -20,7 +23,6 @@ website:
 
 format:
   html:
-    theme: none
+    theme: cosmo
     css: styles.css
     toc: false
-    page-layout: custom

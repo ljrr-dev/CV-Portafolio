@@ -1,0 +1,156 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "Sobre mí",
+    "section": "",
+    "text": "Work in progress"
+  },
+  {
+    "objectID": "about.html#quién-soy",
+    "href": "about.html#quién-soy",
+    "title": "Sobre mí",
+    "section": "",
+    "text": "Work in progress"
+  },
+  {
+    "objectID": "about.html#proyectos-destacados",
+    "href": "about.html#proyectos-destacados",
+    "title": "Sobre mí",
+    "section": "Proyectos destacados",
+    "text": "Proyectos destacados\n\nNombre del Proyecto\nStack: Python · Quarto · PostgreSQL\nDescripción del proyecto, qué problema resolvía, qué aprendiste. Ver repositorio →\n\n\n\nOtro Proyecto\nStack: Java · Spring Boot · Kafka\nDescripción del proyecto."
+  },
+  {
+    "objectID": "about.html#intereses-técnicos",
+    "href": "about.html#intereses-técnicos",
+    "title": "Sobre mí",
+    "section": "Intereses técnicos",
+    "text": "Intereses técnicos\n\nArquitectura de sistemas distribuidos\nPipelines de datos y análisis exploratorio\nHerramientas CLI y automatización en Linux\nVisualización de datos interactiva"
+  },
+  {
+    "objectID": "about.html#idiomas",
+    "href": "about.html#idiomas",
+    "title": "Sobre mí",
+    "section": "Idiomas",
+    "text": "Idiomas\n\nEspañol — nativo\nInglés — profesional"
+  },
+  {
+    "objectID": "index-en.html#contact",
+    "href": "index-en.html#contact",
+    "title": "Lu | Dev & Data",
+    "section": "Contact",
+    "text": "Contact\n\n📧 luisjruizreyes@gmail.com\n\n\n📧 luisjruiz@ciencias.unam.mx\n\n\n🐙 github.com/ljrr-dev\n\n\n📍 Ciudad de México, MX"
+  },
+  {
+    "objectID": "index-en.html#languajes-technology",
+    "href": "index-en.html#languajes-technology",
+    "title": "Lu | Dev & Data",
+    "section": "Languajes & Technology",
+    "text": "Languajes & Technology\n\nInglés\n\n\n\n\n\n\nConversational level · Technical Documentation\n\n\n\nPython 4 years\n\n\n\n\n\n\nFastAPI · Flask · NumPy · Plotly · CatBoost · XGBoost ·Prophet · Jupyter Notebooks · Quarto\n\n\n\nJava 3 years\n\n\n\n\n\n\nSpring Boot · Hibernate · Maven · OOP · Functional\n\n\n\nJavaScript 2 years\n\n\n\n\n\n\nReact · Angular · Node.js\n\n\n\nKotlin Android Development 1 año\n\n\n\n\n\n\nAndroid Studio · Physical Phone Sensors · Foreground Services\n\n\n\nBash / Linux 4 years\n\n\n\n\n\n\nCLI tools · scripting · Docker · WSL\n\n\n\nSQL 3 years\n\n\n\n\n\n\nPostgreSQL · SQLite · MySQL\n\n\n\nAI 3 years\n\n\n\n\n\n\nFew shot prompting · XML Tags · Context Injection · Machine Learning · RAG\n\n\n\nDevOps 2 years\n\n\n\n\n\n\nDocker · Kubernetes · CI/CD pipelines · Bamboo · Gitlab · Github Actions\n\n\n\nTest Driven Development 2 years\n\n\n\n\n\n\nJunit · Mockito · CI/CD pipelines"
+  },
+  {
+    "objectID": "index-en.html#otras-herramientas",
+    "href": "index-en.html#otras-herramientas",
+    "title": "Lu | Dev & Data",
+    "section": "Otras Herramientas",
+    "text": "Otras Herramientas\n\nDocker Kubernetes Git Postman SOAPUI CURL Quarto Jupyter VSCodium Linux IntelliJ OWASP SNYK Blackduck/Synopsys"
+  },
+  {
+    "objectID": "index-en.html#summary",
+    "href": "index-en.html#summary",
+    "title": "Lu | Dev & Data",
+    "section": "Summary",
+    "text": "Summary\n\nBackend developer with over 4 years of experience including banking and financial systems. My Strenghts are microservices architecture with Spring Boot and other Java applications, including evergreening and legacy systems updating to current standars. Security focused development: My experience includes a heacy focus on secure development, including backlog and techincal debt management as well as CVE remediaton, SAST and DAST analysis, dependency management in regulated envoirments with CI/CD pipelines through entire lifecycles, from Development, to SIT, UAT, Performance and Productive envoirments. Complementary frontend experience with React, Angular and PHP for Dashboard and massive survey services on white label software."
+  },
+  {
+    "objectID": "index-en.html#experience",
+    "href": "index-en.html#experience",
+    "title": "Lu | Dev & Data",
+    "section": "Experience",
+    "text": "Experience\n\nDeveloper & Data Analyst\nFreelance · April 2026 — Present · CDMX {.job-meta}\n\nCode vulnerability assessment.\nSecurity mitigation strategies and pre-audit remediation.\nMigration planning and technology modernization proposals.\n\n\n\nFullstack Developer\nClientship CX · January 2026 — March 2026 · CDMX {.job-meta}\n\nDashboard development with React under Whitelabel and Multitenant architecture.\nFeature integration for survey services in PHP.\nResilience mechanisms integration in microservices with external dependencies.\nMicroservices integration with bulk messaging services (Twilio, SendGrid, Infobip).\nBacklog generation and vulnerability identification through static and dynamic code analysis.\n\n\n\nBackend Developer / Consultant\nCapgemini · Aug 2024 — Jan 2026 · CDMX {.job-meta}\nDevelopment and evolution of banking microservices within technology modernization programs, collaborating with multidisciplinary teams and business areas.\nAug 2024 — Nov 2025\n\nPlatform migration and application evergreening, ensuring operational stability and service continuity.\nVulnerability remediation and code quality control integrated into CI/CD pipelines aligned with corporate standards.\nCoordination of development, testing and deployment activities via JIRA across distributed teams.\nBackend development with Spring Framework applying maintainability and scalability criteria.\nCode auditing with Sonar, Snyk and Synopsys supporting technical decision-making and risk reduction.\n\nNov 2025 — Jan 2026\n\nEvaluation and execution of production/testing environment homologation strategies and cloud migration, with direct impact on operational costs and deployment times.\nCI/CD process improvement across multiple environments via Bamboo.\nArchitecture analysis and accompaniment in digital transformation considering both technical and operational requirements.\nDefinition and tracking of technical debt remediation plans prioritized by operational impact.\nDirect liaison with management and executive teams, aligning business objectives with technical execution.\nDevelopment team coordination and leadership, fostering collaboration, knowledge transfer and continuous performance improvement.\n\n\n\nSoftware Research & Development\nPaso sin Miedo · Aug 2023 — Jul 2024 · CDMX {.job-meta}\nApplied research and development initiatives focused on new technology adoption and progressive improvement of technical capabilities.\n\nExploration and evaluation of approaches, tools and architectures considering technical feasibility and operational impact.\nDevelopment of PoCs and functional prototypes to validate solutions prior to production adoption.\nComparative analysis of emerging technologies and industry practices supporting informed decisions in modernization processes.\nCollaboration with development and architecture teams for knowledge transfer and gradual incorporation of new solutions.\nDocumentation of technical findings and recommendations, contributing to the evolution of internal standards and best practices.\nCloud deployment of applications on Ubuntu VMs with SQL and NoSQL databases.\nFrontend and backend feature implementation on web dashboard using Angular and Node.js."
+  },
+  {
+    "objectID": "index-en.html#educación",
+    "href": "index-en.html#educación",
+    "title": "Lu | Dev & Data",
+    "section": "Educación",
+    "text": "Educación\n\nMath Major\nFacultad de Ciencias, UNAM\n+100% credits\n\n\nMáster in Data Science\nNuclio Digital School · Barcelona\n\n\nIntroduction to Cybersecurity\nCisco\n\n\nParamedic level Emergency Medical Techinician\nCertificación internacional\n+12 certifications with international recognition · Relevant CV available if relevant\n\n🌙\n\n\n  ⬇"
+  },
+  {
+    "objectID": "demo.html",
+    "href": "demo.html",
+    "title": "Demo Analítica",
+    "section": "",
+    "text": "Work in progress"
+  },
+  {
+    "objectID": "demo.html#dataset",
+    "href": "demo.html#dataset",
+    "title": "Demo Analítica",
+    "section": "Dataset",
+    "text": "Dataset\n\n\nCode\nimport pandas as pd\nimport plotly.express as px\nimport plotly.graph_objects as go\n\n# Reemplaza esto con tus datos reales\n# Ejemplo: datos de indicadores ODS de World Bank vía wbgapi,\n# o cualquier CSV que quieras dejar precargado en el repo.\n\ndf = pd.DataFrame({\n    \"año\": list(range(2015, 2024)),\n    \"valor_a\": [10, 15, 13, 18, 22, 25, 21, 28, 30],\n    \"valor_b\": [8,  12, 14, 17, 19, 23, 24, 26, 29],\n})\n\ndf.head()\n\n\n\n\n\n\n\n\n\naño\nvalor_a\nvalor_b\n\n\n\n\n0\n2015\n10\n8\n\n\n1\n2016\n15\n12\n\n\n2\n2017\n13\n14\n\n\n3\n2018\n18\n17\n\n\n4\n2019\n22\n19"
+  },
+  {
+    "objectID": "demo.html#tendencia-temporal",
+    "href": "demo.html#tendencia-temporal",
+    "title": "Demo Analítica",
+    "section": "Tendencia temporal",
+    "text": "Tendencia temporal\n\n\nCode\nfig = px.line(\n    df,\n    x=\"año\",\n    y=[\"valor_a\", \"valor_b\"],\n    labels={\"value\": \"Indicador\", \"año\": \"Año\", \"variable\": \"Serie\"},\n    title=\"Evolución de indicadores — reemplaza con tus datos\",\n    template=\"plotly_dark\",\n)\nfig.update_layout(\n    font_family=\"'IBM Plex Mono', monospace\",\n    plot_bgcolor=\"rgba(0,0,0,0)\",\n    paper_bgcolor=\"rgba(0,0,0,0)\",\n)\nfig.show()"
+  },
+  {
+    "objectID": "demo.html#distribución",
+    "href": "demo.html#distribución",
+    "title": "Demo Analítica",
+    "section": "Distribución",
+    "text": "Distribución\n\n\nCode\nfig2 = px.scatter(\n    df,\n    x=\"valor_a\",\n    y=\"valor_b\",\n    size=\"valor_a\",\n    color=\"año\",\n    title=\"Relación entre variables\",\n    template=\"plotly_dark\",\n)\nfig2.update_layout(\n    plot_bgcolor=\"rgba(0,0,0,0)\",\n    paper_bgcolor=\"rgba(0,0,0,0)\",\n)\nfig2.show()\n\n\n                            \n                                            \n\n\n\n\n\n\n\n\nNoteSobre esta demo\n\n\n\nLos datos de ejemplo son placeholders. El análisis real puede conectar con fuentes como World Bank (wbgapi), INEGI, o cualquier CSV en el repositorio."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Luis Jorge Ruiz Reyes",
+    "section": "",
+    "text": "📧 luisjruizreyes@gmail.com\n\n\n📧 luisjruiz@ciencias.unam.mx\n\n\n🐙 github.com/ljrr-dev\n\n\n📍 Ciudad de México, MX\n\n\n\n\n\n\n\n\nInglés\n\n\n\n\n\n\nNivel conversacional · Lectura y escritura avanzada · Capacidad de Lectura y Escritura de Documentación Técnica\n\n\n\nPython 4 años\n\n\n\n\n\n\nFastAPI · Flask · NumPy · Plotly · CatBoost · XGBoost ·Prophet · Jupyter Notebooks · Quarto\n\n\n\nJava 3 años\n\n\n\n\n\n\nSpring Boot · Hibernate · Maven · OOP · Functional\n\n\n\nJavaScript 2 años\n\n\n\n\n\n\nReact · Node.js · Angular\n\n\n\nKotlin Android Development 1 año\n\n\n\n\n\n\nUso de sensores Físicos · Android Studio\n\n\n\nBash / Linux 4 años\n\n\n\n\n\n\nCLI tools · scripting · Docker · WSL\n\n\n\nSQL 3 años\n\n\n\n\n\n\nPostgreSQL · SQLite · MySQL\n\n\n\nAI 3 años\n\n\n\n\n\n\nFew shot prompting · Zero shot prompting · Machine Learning · RAG\n\n\n\nDevOps 2 años\n\n\n\n\n\n\nDocker · Kubernetes · CI/CD pipelines · Bamboo · Gitlab · Github Actions\n\n\n\nTest Driven Development 2 años\n\n\n\n\n\n\nJunit · Mockito · CI/CD pipelines\n\n\n\n\n\n\n\n\n\nDocker Kubernetes Git Postman SOAPUI CURL Quarto Jupyter VSCodium Linux IntelliJ OWASP SNYK Blackduck/Synopsys\n\n\n\n\n\n\n\n\nBackend developer con 4 años de experiencia en sistemas bancarios y financieros. Especializado en arquitectura de microservicios con Spring Boot y Java, incluyendo desarrollo greenfield y modernización de sistemas legacy. Orientado a seguridad desde el desarrollo: remediación de vulnerabilidades, análisis SAST/DAST, gestión de dependencias y control de deuda técnica en entornos regulados con pipelines CI/CD. Experiencia en ciclos de vida completos: ambientes Dev, SIT, UAT, Performance y producción. Habilidades complementarias en frontend con React, Angular y PHP para desarrollo de dashboards y servicios de encuestas masivas.\n\n\n\n\n\n\n\n\n\nFreelance · Abril 2026 - Actualidad · CDMX\n\nEvaluación de Vulnerabilidades en código.\nEstrategias de mitigación y remediaciones de seguridad pre auditoría.\nElaboración de planes de migración y modernización tecnológica.\nTesis en progreso: Clusterización y análisis con Machine Learning de Resonancia de Fano a Nano Estructuras.\n\n\n\n\nClientship CX · Enero 2026 — Marzo 2026 · CDMX\n\nDesarrollo de dashboards con React en Arquitectura Whitelabel y Multitenant.\nIntegración de funcionalidades a servicios de encuestas en PHP.\nIntegración de mecanismos de Resiliencia en microservicios con dependencias externas.\nIntegración de microservicios a Servicios de envío masivo (Twillio, Sendgrid, Infobip).\nGeneración de Backlog e identificación de vulnerabilidades con Análisis estático y Dinámico de Código\n\n\n\n\nCapgemini · Ago 2024 — Enero 2026 · CDMX\nDesarrollo y evolución de microservicios bancarios en programas de modernización tecnológica, colaborando con equipos multidisciplinarios y áreas de negocio.\nAgo 2024 — Nov 2025\n\nMigración de plataformas y evergreening de aplicaciones, asegurando estabilidad operativa y continuidad del servicio.\nRemediación de vulnerabilidades y control de calidad de código integrados a pipelines CI/CD alineados a estándares corporativos.\nCoordinación de desarrollo, pruebas y despliegue vía JIRA entre equipos distribuidos.\nDesarrollo backend con Spring Framework aplicando criterios de mantenibilidad y escalabilidad.\nAuditoría de código con Sonar, Snyk y Synopsis como soporte a decisiones técnicas y reducción de riesgos.\n\nNov 2025 — Enero 2026\n\nEvaluación y ejecución de estrategias de homologación de ambientes productivos/pruebas y migración a nube, con impacto directo en costos y tiempos de despliegue.\nMejora de procesos CI/CD en múltiples entornos mediante Bamboo.\nAnálisis de arquitectura y acompañamiento en transformación digital considerando requerimientos técnicos y operativos.\nDefinición y seguimiento de planes de remediación de deuda técnica priorizados por impacto operativo.\nInterlocución directa con equipos gerenciales y directivos, alineando objetivos de negocio con ejecución técnica.\nLiderazgo del equipo de desarrollo, promoviendo colaboración, transferencia de conocimiento y mejora continua.\n\n\n\n\nPaso sin Miedo · Ago 2023 — Jul 2024 · CDMX\nIniciativas de investigación aplicada y desarrollo orientadas a la adopción de nuevas tecnologías y mejora de capacidades técnicas.\n\nExploración y evaluación de enfoques, herramientas y arquitecturas considerando viabilidad técnica e impacto operativo.\nDesarrollo de PoCs y prototipos funcionales para validar soluciones antes de su adopción en producción.\nAnálisis comparativo de tecnologías emergentes apoyando decisiones informadas en procesos de modernización.\nColaboración con equipos de desarrollo y arquitectura para transferencia de conocimiento e incorporación gradual de soluciones.\nDocumentación de hallazgos técnicos y recomendaciones, contribuyendo a la evolución de estándares internos.\n\n\n\n\nOn Time Connect · Jun 2023 — Jul 2024 · CDMX / Condado de Bexar, TX\n\nDespliegue en nube de aplicativos en VMs con Ubuntu y bases de datos SQL y NoSQL.\nImplementación de funcionalidades frontend y backend en dashboard web con Angular y Node.js.\n\n\n\n\n\n\n\n\n\n\nFacultad de Ciencias, UNAM\n+100% de avance curricular · Titulación esperada 2026\n\n\n\nNuclio Digital School · Barcelona\n\n\n\nGoogle Cloud\nBadges obtenidos: Essential Cloud Infrastructure: Foundation · Cloud Fundamentals: Core Infrastructure\n\n\n\nCisco\n\n\n\nCertificación internacional\n+12 certificados de validez internacional · CV relevante disponible bajo solicitud\n\n\n\n🌙\n\n\n  ⬇"
+  },
+  {
+    "objectID": "index.html#contacto",
+    "href": "index.html#contacto",
+    "title": "Luis Jorge Ruiz Reyes",
+    "section": "",
+    "text": "📧 luisjruizreyes@gmail.com\n\n\n📧 luisjruiz@ciencias.unam.mx\n\n\n🐙 github.com/ljrr-dev\n\n\n📍 Ciudad de México, MX"
+  },
+  {
+    "objectID": "index.html#lenguajes-habilidades-tecnológicas",
+    "href": "index.html#lenguajes-habilidades-tecnológicas",
+    "title": "Luis Jorge Ruiz Reyes",
+    "section": "",
+    "text": "Inglés\n\n\n\n\n\n\nNivel conversacional · Lectura y escritura avanzada · Capacidad de Lectura y Escritura de Documentación Técnica\n\n\n\nPython 4 años\n\n\n\n\n\n\nFastAPI · Flask · NumPy · Plotly · CatBoost · XGBoost ·Prophet · Jupyter Notebooks · Quarto\n\n\n\nJava 3 años\n\n\n\n\n\n\nSpring Boot · Hibernate · Maven · OOP · Functional\n\n\n\nJavaScript 2 años\n\n\n\n\n\n\nReact · Node.js · Angular\n\n\n\nKotlin Android Development 1 año\n\n\n\n\n\n\nUso de sensores Físicos · Android Studio\n\n\n\nBash / Linux 4 años\n\n\n\n\n\n\nCLI tools · scripting · Docker · WSL\n\n\n\nSQL 3 años\n\n\n\n\n\n\nPostgreSQL · SQLite · MySQL\n\n\n\nAI 3 años\n\n\n\n\n\n\nFew shot prompting · Zero shot prompting · Machine Learning · RAG\n\n\n\nDevOps 2 años\n\n\n\n\n\n\nDocker · Kubernetes · CI/CD pipelines · Bamboo · Gitlab · Github Actions\n\n\n\nTest Driven Development 2 años\n\n\n\n\n\n\nJunit · Mockito · CI/CD pipelines"
+  },
+  {
+    "objectID": "index.html#otras-herramientas",
+    "href": "index.html#otras-herramientas",
+    "title": "Luis Jorge Ruiz Reyes",
+    "section": "",
+    "text": "Docker Kubernetes Git Postman SOAPUI CURL Quarto Jupyter VSCodium Linux IntelliJ OWASP SNYK Blackduck/Synopsys"
+  },
+  {
+    "objectID": "index.html#resumen",
+    "href": "index.html#resumen",
+    "title": "Luis Jorge Ruiz Reyes",
+    "section": "",
+    "text": "Backend developer con 4 años de experiencia en sistemas bancarios y financieros. Especializado en arquitectura de microservicios con Spring Boot y Java, incluyendo desarrollo greenfield y modernización de sistemas legacy. Orientado a seguridad desde el desarrollo: remediación de vulnerabilidades, análisis SAST/DAST, gestión de dependencias y control de deuda técnica en entornos regulados con pipelines CI/CD. Experiencia en ciclos de vida completos: ambientes Dev, SIT, UAT, Performance y producción. Habilidades complementarias en frontend con React, Angular y PHP para desarrollo de dashboards y servicios de encuestas masivas."
+  },
+  {
+    "objectID": "index.html#experiencia",
+    "href": "index.html#experiencia",
+    "title": "Luis Jorge Ruiz Reyes",
+    "section": "",
+    "text": "Freelance · Abril 2026 - Actualidad · CDMX\n\nEvaluación de Vulnerabilidades en código.\nEstrategias de mitigación y remediaciones de seguridad pre auditoría.\nElaboración de planes de migración y modernización tecnológica.\nTesis en progreso: Clusterización y análisis con Machine Learning de Resonancia de Fano a Nano Estructuras.\n\n\n\n\nClientship CX · Enero 2026 — Marzo 2026 · CDMX\n\nDesarrollo de dashboards con React en Arquitectura Whitelabel y Multitenant.\nIntegración de funcionalidades a servicios de encuestas en PHP.\nIntegración de mecanismos de Resiliencia en microservicios con dependencias externas.\nIntegración de microservicios a Servicios de envío masivo (Twillio, Sendgrid, Infobip).\nGeneración de Backlog e identificación de vulnerabilidades con Análisis estático y Dinámico de Código\n\n\n\n\nCapgemini · Ago 2024 — Enero 2026 · CDMX\nDesarrollo y evolución de microservicios bancarios en programas de modernización tecnológica, colaborando con equipos multidisciplinarios y áreas de negocio.\nAgo 2024 — Nov 2025\n\nMigración de plataformas y evergreening de aplicaciones, asegurando estabilidad operativa y continuidad del servicio.\nRemediación de vulnerabilidades y control de calidad de código integrados a pipelines CI/CD alineados a estándares corporativos.\nCoordinación de desarrollo, pruebas y despliegue vía JIRA entre equipos distribuidos.\nDesarrollo backend con Spring Framework aplicando criterios de mantenibilidad y escalabilidad.\nAuditoría de código con Sonar, Snyk y Synopsis como soporte a decisiones técnicas y reducción de riesgos.\n\nNov 2025 — Enero 2026\n\nEvaluación y ejecución de estrategias de homologación de ambientes productivos/pruebas y migración a nube, con impacto directo en costos y tiempos de despliegue.\nMejora de procesos CI/CD en múltiples entornos mediante Bamboo.\nAnálisis de arquitectura y acompañamiento en transformación digital considerando requerimientos técnicos y operativos.\nDefinición y seguimiento de planes de remediación de deuda técnica priorizados por impacto operativo.\nInterlocución directa con equipos gerenciales y directivos, alineando objetivos de negocio con ejecución técnica.\nLiderazgo del equipo de desarrollo, promoviendo colaboración, transferencia de conocimiento y mejora continua.\n\n\n\n\nPaso sin Miedo · Ago 2023 — Jul 2024 · CDMX\nIniciativas de investigación aplicada y desarrollo orientadas a la adopción de nuevas tecnologías y mejora de capacidades técnicas.\n\nExploración y evaluación de enfoques, herramientas y arquitecturas considerando viabilidad técnica e impacto operativo.\nDesarrollo de PoCs y prototipos funcionales para validar soluciones antes de su adopción en producción.\nAnálisis comparativo de tecnologías emergentes apoyando decisiones informadas en procesos de modernización.\nColaboración con equipos de desarrollo y arquitectura para transferencia de conocimiento e incorporación gradual de soluciones.\nDocumentación de hallazgos técnicos y recomendaciones, contribuyendo a la evolución de estándares internos.\n\n\n\n\nOn Time Connect · Jun 2023 — Jul 2024 · CDMX / Condado de Bexar, TX\n\nDespliegue en nube de aplicativos en VMs con Ubuntu y bases de datos SQL y NoSQL.\nImplementación de funcionalidades frontend y backend en dashboard web con Angular y Node.js."
+  },
+  {
+    "objectID": "index.html#educación",
+    "href": "index.html#educación",
+    "title": "Luis Jorge Ruiz Reyes",
+    "section": "",
+    "text": "Facultad de Ciencias, UNAM\n+100% de avance curricular · Titulación esperada 2026\n\n\n\nNuclio Digital School · Barcelona\n\n\n\nGoogle Cloud\nBadges obtenidos: Essential Cloud Infrastructure: Foundation · Cloud Fundamentals: Core Infrastructure\n\n\n\nCisco\n\n\n\nCertificación internacional\n+12 certificados de validez internacional · CV relevante disponible bajo solicitud"
+  }
+]
