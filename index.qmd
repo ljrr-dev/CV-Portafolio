@@ -1,0 +1,351 @@
+---
+title: ""
+---
+
+:::: {.cv-wrapper}
+
+::: {.sidebar}
+
+ ![](avatar.jpeg){.avatar}
+
+# Luis Jorge Ruiz Reyes {.sidebar-name}
+### Desarrollador de Software & Analista de Datos {.sidebar-title}
+
+::: {.divider}
+:::
+
+## Contacto {.section-label}
+
+::: {.contact-item}
+📧 luisjruizreyes@gmail.com
+:::
+::: {.contact-item}
+📧 luisjruiz@ciencias.unam.mx
+:::
+::: {.contact-item}
+🐙 [github.com/ljrr-dev](https://github.com/ljrr-dev)
+:::
+::: {.contact-item}
+📍 Ciudad de México, MX
+:::
+
+::: {.divider}
+:::
+## Lenguajes & Habilidades Tecnológicas {.section-label}
+
+::: {.skill-block}
+**Inglés**
+
+::: {.skill-bar}
+
+::: {.skill-fill .y5}
+:::
+
+:::
+
+::: {.frameworks}
+Nivel conversacional · Lectura y escritura avanzada · Capacidad de Lectura y Escritura de Documentación Técnica
+:::
+:::
+
+::: {.skill-block}
+**Python 4 años**
+
+::: {.skill-bar}
+
+::: {.skill-fill .y4}
+:::
+
+:::
+
+::: {.frameworks}
+FastAPI · Flask · NumPy · Plotly · CatBoost · XGBoost ·Prophet · Jupyter Notebooks · Quarto
+:::
+:::
+
+::: {.skill-block}
+**Java 3 años**
+
+::: {.skill-bar}
+
+::: {.skill-fill .y3}
+:::
+
+:::
+
+::: {.frameworks}
+Spring Boot · Hibernate · Maven · OOP · Functional
+:::
+
+:::
+
+
+::: {.skill-block}
+**JavaScript 2 años**
+
+::: {.skill-bar}
+
+::: {.skill-fill .y2}
+:::
+
+:::
+
+::: {.frameworks}
+React · Node.js · Angular
+:::
+:::
+
+::: {.skill-block}
+**Kotlin Android Development 1 año**
+
+::: {.skill-bar}
+
+::: {.skill-fill .y1}
+:::
+
+:::
+
+::: {.frameworks}
+Uso de sensores Físicos · Android Studio
+:::
+
+:::
+
+::: {.skill-block}
+**Bash / Linux 4 años**
+
+::: {.skill-bar}
+
+::: {.skill-fill .y4}
+:::
+
+:::
+
+::: {.frameworks}
+CLI tools · scripting · Docker · WSL
+:::
+
+:::
+
+::: {.skill-block}
+**SQL 3 años**
+
+::: {.skill-bar}
+
+::: {.skill-fill .y3}
+:::
+
+:::
+
+::: {.frameworks}
+PostgreSQL · SQLite · MySQL
+:::
+:::
+
+::: {.skill-block}
+**AI 3 años**
+
+::: {.skill-bar}
+
+::: {.skill-fill .y3}
+:::
+
+:::
+
+::: {.frameworks}
+Few shot prompting · Zero shot prompting · Machine Learning · RAG
+:::
+
+:::
+
+::: {.skill-block}
+**DevOps 2 años**
+
+::: {.skill-bar}
+
+::: {.skill-fill .y2}
+:::
+
+:::
+
+::: {.frameworks}
+Docker · Kubernetes · CI/CD pipelines · Bamboo · Gitlab · Github Actions
+:::
+
+:::
+
+::: {.skill-block}
+**Test Driven Development 2 años**
+
+::: {.skill-bar}
+
+::: {.skill-fill .y2}
+:::
+
+:::
+
+::: {.frameworks}
+Junit · Mockito · CI/CD pipelines 
+:::
+
+:::
+
+
+::: {.divider}
+:::
+
+## Otras Herramientas {.section-label}
+
+::: {.tag-cloud}
+[Docker]{.tag} [Kubernetes]{.tag} [Git]{.tag} 
+[Postman]{.tag} [SOAPUI]{.tag} [CURL]{.tag}
+[Quarto]{.tag} [Jupyter]{.tag}
+[VSCodium]{.tag} [Linux]{.tag}  [IntelliJ]{.tag}
+[OWASP]{.tag} [SNYK]{.tag} [Blackduck/Synopsys]{.tag}
+
+
+:::
+
+:::
+
+::: {.main-content}
+
+## Resumen {.cv-section}
+
+::: {.summary-block}
+Backend developer con 4 años de experiencia en sistemas bancarios y financieros. Especializado en arquitectura de microservicios con Spring Boot y Java, incluyendo desarrollo greenfield y modernización de sistemas legacy. Orientado a seguridad desde el desarrollo: remediación de vulnerabilidades, análisis SAST/DAST, gestión de dependencias y control de deuda técnica en entornos regulados con pipelines CI/CD.
+Experiencia en ciclos de vida completos: ambientes Dev, SIT, UAT, Performance y producción. Habilidades complementarias en frontend con React, Angular y PHP para desarrollo de dashboards y servicios de encuestas masivas.
+:::
+
+::: {.divider}
+:::
+
+## Experiencia {.cv-section}
+
+::: {.job}
+### Developer & Data Analyst {.job-title}
+**Freelance** · Abril 2026 - Actualidad · CDMX 
+
+- Evaluación de Vulnerabilidades en código.
+- Estrategias de mitigación y remediaciones de seguridad pre auditoría.
+- Elaboración de planes de migración y modernización tecnológica.
+- Tesis en progreso: Clusterización y análisis con Machine Learning de Resonancia de Fano a Nano Estructuras.
+
+:::
+
+::: {.job}
+### Fullstack Developer {.job-title}
+**Clientship CX** · Enero 2026 — Marzo 2026 · CDMX 
+
+- Desarrollo de dashboards con React en Arquitectura Whitelabel y Multitenant.
+- Integración de funcionalidades a servicios de encuestas en PHP.
+- Integración de mecanismos de Resiliencia en microservicios con dependencias externas.
+- Integración de microservicios a Servicios de envío masivo (Twillio, Sendgrid, Infobip).
+- Generación de Backlog e identificación de vulnerabilidades con Análisis estático y Dinámico de Código
+
+:::
+
+::: {.job}
+### Backend Developer / Consultant {.job-title}
+**Capgemini** · Ago 2024 — Enero 2026 · CDMX 
+
+Desarrollo y evolución de microservicios bancarios en programas de modernización tecnológica, colaborando con equipos multidisciplinarios y áreas de negocio.
+
+**Ago 2024 — Nov 2025**
+
+- Migración de plataformas y evergreening de aplicaciones, asegurando estabilidad operativa y continuidad del servicio.
+- Remediación de vulnerabilidades y control de calidad de código integrados a pipelines CI/CD alineados a estándares corporativos.
+- Coordinación de desarrollo, pruebas y despliegue vía JIRA entre equipos distribuidos.
+- Desarrollo backend con Spring Framework aplicando criterios de mantenibilidad y escalabilidad.
+- Auditoría de código con Sonar, Snyk y Synopsis como soporte a decisiones técnicas y reducción de riesgos.
+
+**Nov 2025 — Enero 2026**
+
+- Evaluación y ejecución de estrategias de homologación de ambientes productivos/pruebas y migración a nube, con impacto directo en costos y tiempos de despliegue.
+- Mejora de procesos CI/CD en múltiples entornos mediante Bamboo.
+- Análisis de arquitectura y acompañamiento en transformación digital considerando requerimientos técnicos y operativos.
+- Definición y seguimiento de planes de remediación de deuda técnica priorizados por impacto operativo.
+- Interlocución directa con equipos gerenciales y directivos, alineando objetivos de negocio con ejecución técnica.
+- Liderazgo del equipo de desarrollo, promoviendo colaboración, transferencia de conocimiento y mejora continua.
+:::
+
+::: {.job}
+### Investigación y Desarrollo de Software {.job-title}
+**Paso sin Miedo** · Ago 2023 — Jul 2024 · CDMX 
+
+Iniciativas de investigación aplicada y desarrollo orientadas a la adopción de nuevas tecnologías y mejora de capacidades técnicas.
+
+- Exploración y evaluación de enfoques, herramientas y arquitecturas considerando viabilidad técnica e impacto operativo.
+- Desarrollo de PoCs y prototipos funcionales para validar soluciones antes de su adopción en producción.
+- Análisis comparativo de tecnologías emergentes apoyando decisiones informadas en procesos de modernización.
+- Colaboración con equipos de desarrollo y arquitectura para transferencia de conocimiento e incorporación gradual de soluciones.
+- Documentación de hallazgos técnicos y recomendaciones, contribuyendo a la evolución de estándares internos.
+:::
+
+::: {.job}
+### Desarrollador Android & Full Stack {.job-title}
+**On Time Connect** · Jun 2023 — Jul 2024 · CDMX / Condado de Bexar, TX 
+
+- Despliegue en nube de aplicativos en VMs con Ubuntu y bases de datos SQL y NoSQL.
+- Implementación de funcionalidades frontend y backend en dashboard web con Angular y Node.js.
+:::
+
+::: {.divider}
+:::
+
+## Educación {.cv-section}
+
+::: {.edu}
+### Licenciatura en Matemáticas {.edu-title}
+**Facultad de Ciencias, UNAM** 
+
++100% de avance curricular · Titulación esperada 2026
+:::
+
+::: {.edu}
+### Máster en Data Science {.edu-title}
+**Nuclio Digital School** · Barcelona 
+:::
+
+::: {.edu}
+### Google Professional Cloud Architect (en curso, 60%) {.edu-title}
+**Google Cloud** 
+
+Badges obtenidos: Essential Cloud Infrastructure: Foundation · Cloud Fundamentals: Core Infrastructure
+:::
+
+::: {.edu}
+### Introduction to Cybersecurity {.edu-title}
+**Cisco** 
+:::
+
+::: {.edu}
+### Técnico en Urgencias Médicas Nivel Avanzado {.edu-title}
+**Certificación internacional** 
+
++12 certificados de validez internacional · CV relevante disponible bajo solicitud
+:::
+
+:::
+
+```{=html}
+<button id="theme-toggle" title="Cambiar tema">🌙</button>
+<script>
+  const btn = document.getElementById('theme-toggle');
+  btn.addEventListener('click', () => {
+    document.body.classList.toggle('light');
+    btn.textContent = document.body.classList.contains('light') ? '☀️' : '🌙';
+    btn.classList.remove('switching');
+    void btn.offsetWidth; // reflow para re-triggerear animación
+    btn.classList.add('switching');
+  });
+</script>
+```
+
+```{=html}
+<a id="download-btn" href="Luis_Jorge_Ruiz_Dev2026.pdf" download="Luis_Jorge_Ruiz_Dev2026.pdf" title="Descargar CV">
+  ⬇
+</a>
+```
+
+::::

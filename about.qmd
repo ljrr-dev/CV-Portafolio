@@ -1,0 +1,10 @@
+---
+title: "Sobre mí"
+format:
+  html:
+    page-layout: article
+---
+
+## Quién soy
+
+Work in progress

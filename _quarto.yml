@@ -1,0 +1,29 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Lu | Dev & Data"
+  navbar:
+    left:
+      - href: index.qmd
+        text: CV
+      - href: demo.qmd
+        text: Demo
+      - href: about.qmd
+        text: About
+    right:
+      - href: index.qmd
+        text: ES
+      - href: index-en.qmd
+        text: EN
+      - icon: github
+        href: https://github.com/ljrr-dev
+  page-footer:
+    center: "© 2025 Lu · Hecho con Quarto"
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: false

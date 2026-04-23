@@ -1,0 +1,18 @@
+---
+title: "Demo Analítica"
+subtitle: "Análisis exploratorio con datos reales"
+format:
+  html:
+    page-layout: article
+    code-fold: true
+    code-tools: true
+execute:
+  echo: true
+  warning: false
+jupyter: python3
+---
+
+::: {.demo-intro}
+Work in progress
+:::
+
