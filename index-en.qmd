@@ -235,6 +235,14 @@ Complementary frontend experience with React, Angular and PHP for Dashboard and 
 :::
 
 ::: {.job}
+### Developer {.job-title}
+**Sports Marketing Intelligence** · May 2026 - Actuality · CDMX 
+
+- .NET development for TV graphic broadcasting
+-Cybersecurity assesment and backlog planning
+-New Feature development for TV graphic broadcasting
+
+::: {.job}
 ### Fullstack Developer {.job-title}
 **Clientship CX** · January 2026 — March 2026 · CDMX {.job-meta}
 

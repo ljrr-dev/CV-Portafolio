@@ -234,6 +234,16 @@ Experiencia en ciclos de vida completos: ambientes Dev, SIT, UAT, Performance y 
 :::
 
 ::: {.job}
+### Developer {.job-title}
+**Sports Marketing Intelligence** · Mayo 2026 - Actualidad · CDMX 
+
+- Desarrollo de aplicaciones en .NET para control de gráficos Televisivos
+-Evaluación de seguridad pre auditoría y planeación de Remediación y Gestión de vulnerabilidades
+-Desarrollo de funcionalidades nuevas para producción de gráficos deportivos televisados
+
+:::
+
+::: {.job}
 ### Fullstack Developer {.job-title}
 **Clientship CX** · Enero 2026 — Marzo 2026 · CDMX 
 
@@ -307,9 +317,7 @@ Iniciativas de investigación aplicada y desarrollo orientadas a la adopción de
 **Nuclio Digital School** · Barcelona 
 :::
 
-::: {.edu}
-### Google Professional Cloud Architect (en curso, 60%) {.edu-title}
-**Google Cloud** 
+
 
 Badges obtenidos: Essential Cloud Infrastructure: Foundation · Cloud Fundamentals: Core Infrastructure
 :::
