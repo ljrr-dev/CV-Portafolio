@@ -450,3 +450,34 @@ body.light #download-btn {
 @media print {
   #download-btn { display: none; }
 }
+/* ---------- Demo: galería de clips ---------- */
+.demo-intro {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+  border-left: 2px solid var(--accent);
+  padding-left: 14px;
+  margin-bottom: 28px;
+}
+
+.clip-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.clip video {
+  width: 100%;
+  display: block;
+  background: #000;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.clip-title {
+  display: block;
+  margin-top: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+}
