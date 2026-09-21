@@ -318,8 +318,11 @@ Iniciativas de investigación aplicada y desarrollo orientadas a la adopción de
 :::
 
 
+::: {.edu}
+### 401 {.edu-title}
+**Nuclio Digital School** · Barcelona 
+:::
 
-Badges obtenidos: Essential Cloud Infrastructure: Foundation · Cloud Fundamentals: Core Infrastructure
 :::
 
 ::: {.edu}

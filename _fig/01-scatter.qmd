@@ -1,0 +1,25 @@
+```{python}
+#| label: g-scatter
+base = df[~df.in_kev].sample(n=min(25000, int((~df.in_kev).sum())), random_state=42)
+hot  = df[df.in_kev]
+
+fig = go.Figure()
+fig.add_trace(go.Scattergl(
+    x=base.cvss, y=base.epss, mode="markers", name=L["disp_sin_kev"],
+    marker=dict(size=4, color=MUTED, opacity=.40),
+    hovertemplate="%{customdata}<br>CVSS %{x} · EPSS %{y:.3f}<extra></extra>",
+    customdata=base.cve))
+fig.add_trace(go.Scattergl(
+    x=hot.cvss, y=hot.epss, mode="markers", name=L["disp_con_kev"],
+    marker=dict(size=3.5, color=WARN, opacity=.55),
+    hovertemplate="%{customdata}<br>CVSS %{x} · EPSS %{y:.3f}<extra></extra>",
+    customdata=hot.cve))
+fig.add_vline(x=9.0, line=dict(color=ACCENT, dash="dash", width=1),
+              annotation_text=L["disp_umbral"], annotation_font_color=ACCENT)
+fig.update_layout(height=520, xaxis_title=L["eje_cvss"],
+                  yaxis_title=L["eje_epss_30d"],
+                  xaxis=dict(range=[-0.3, 10.4], dtick=2),
+                  yaxis=dict(range=[-0.03, 1.03]),
+                  legend=dict(orientation="h", y=1.12))
+fig.show()
+```

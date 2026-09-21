@@ -1,0 +1,165 @@
+```{python}
+#| label: simulador
+#| echo: false
+import json
+from IPython.display import HTML
+
+# Muestra: todos los KEV + una muestra de los demas (el navegador no aguanta 373k puntos)
+N_MUESTRA = 20000
+_sin = df[~df.in_kev].sample(n=min(N_MUESTRA, int((~df.in_kev).sum())), random_state=7)
+_sim = pd.concat([_sin, df[df.in_kev]])
+
+DATOS = {
+    "x": [round(float(v), 1) for v in _sim.cvss],
+    "y": [round(float(v), 5) for v in _sim.epss],
+    "k": [int(v) for v in _sim.in_kev],
+    "n_kev": int(df.in_kev.sum()),
+    # El KEV va completo, pero el resto es una muestra: para que las cifras
+    # sean comparables con la tabla, los no-KEV se extrapolan al universo real.
+    "factor": float((~df.in_kev).sum()) / len(_sin),
+}
+
+TEXTOS = {c: L[c] for c in L if c.startswith("sim_")}
+TEXTOS["eje_cvss"] = L["eje_cvss"]
+TEXTOS["eje_epss"] = L["eje_epss"]
+
+HTML(f"""
+<div class="sim" id="sim">
+  <div class="sim-controles">
+    <label class="sim-dial">
+      <span class="sim-lab">{L['sim_cvss']} <b id="sim-vc">9.0</b></span>
+      <input type="range" id="sim-cvss" min="0" max="10.1" step="0.1" value="9">
+    </label>
+    <label class="sim-dial">
+      <span class="sim-lab">{L['sim_epss']} <b id="sim-ve">1.00</b></span>
+      <input type="range" id="sim-epss" min="0" max="1.01" step="0.01" value="1.01">
+    </label>
+    <label class="sim-check">
+      <input type="checkbox" id="sim-kev"> {L['sim_kev']}
+    </label>
+  </div>
+
+  <div class="sim-metricas">
+    <div class="sim-m"><span id="sim-trabajo">—</span><small>{L['sim_m_trabajo']}</small></div>
+    <div class="sim-m"><span id="sim-cobertura">—</span><small>{L['sim_m_cobertura']}</small></div>
+    <div class="sim-m"><span id="sim-precision">—</span><small>{L['sim_m_precision']}</small></div>
+    <div class="sim-m sim-m-alerta"><span id="sim-escapan">—</span><small>{L['sim_m_escapan']}</small></div>
+  </div>
+
+  <div id="sim-plot"></div>
+  <p class="sim-nota">{L['sim_nota'].format(n=len(_sin), k=DATOS['n_kev'])}</p>
+</div>
+
+<script>
+(function () {{
+  const D = {json.dumps(DATOS)};
+  const T = {json.dumps(TEXTOS, ensure_ascii=False)};
+  const COL = {{ tp: "#3fb950", fn: "#f85149", fp: "#58a6ff", tn: "#8b949e" }};
+
+  function esperarPlotly(cb) {{
+    if (window.Plotly) return cb();
+    setTimeout(function () {{ esperarPlotly(cb); }}, 120);
+  }}
+
+  esperarPlotly(function () {{
+    const el = document.getElementById("sim-plot");
+    const sc = document.getElementById("sim-cvss");
+    const se = document.getElementById("sim-epss");
+    const sk = document.getElementById("sim-kev");
+
+    const base = {{
+      mode: "markers", type: "scattergl",
+      hovertemplate: "CVSS %{{x}} · EPSS %{{y:.3f}}<extra></extra>"
+    }};
+
+    function partir() {{
+      const tc = parseFloat(sc.value), te = parseFloat(se.value), fk = sk.checked;
+      const g = {{ tp: [[], []], fn: [[], []], fp: [[], []], tn: [[], []] }};
+      let tp = 0, fp = 0, kev = 0;
+
+      for (let i = 0; i < D.x.length; i++) {{
+        const x = D.x[i], y = D.y[i], k = D.k[i];
+        const rem = x >= tc || y >= te || (fk && k === 1);
+        if (k) kev++;
+        let c;
+        if (k && rem) {{ c = "tp"; tp++; }}
+        else if (k && !rem) c = "fn";
+        else if (!k && rem) {{ c = "fp"; fp++; }}
+        else c = "tn";
+        g[c][0].push(x); g[c][1].push(y);
+      }}
+      // KEV completo + no-KEV extrapolados desde la muestra
+      const remediados = Math.round(tp + fp * D.factor);
+      return {{ g, remediados, tp, kev }};
+    }}
+
+    function pintar(primera) {{
+      const r = partir();
+      const traces = [
+        Object.assign({{}}, base, {{
+          x: r.g.tn[0], y: r.g.tn[1], name: T.sim_g_tn,
+          marker: {{ size: 3, color: COL.tn, opacity: .18, symbol: "circle" }}
+        }}),
+        Object.assign({{}}, base, {{
+          x: r.g.fp[0], y: r.g.fp[1], name: T.sim_g_fp,
+          marker: {{ size: 4, color: COL.fp, opacity: .35, symbol: "circle-open" }}
+        }}),
+        Object.assign({{}}, base, {{
+          x: r.g.tp[0], y: r.g.tp[1], name: T.sim_g_tp,
+          marker: {{ size: 6, color: COL.tp, opacity: .85, symbol: "circle" }}
+        }}),
+        Object.assign({{}}, base, {{
+          x: r.g.fn[0], y: r.g.fn[1], name: T.sim_g_fn,
+          marker: {{ size: 7, color: COL.fn, opacity: .95, symbol: "x" }}
+        }})
+      ];
+
+      const tc = parseFloat(sc.value), te = parseFloat(se.value);
+      const C0 = window.temaColores ? window.temaColores() : {{ texto: "#e6edf3" }};
+      const formas = [];
+      if (tc <= 10) formas.push({{
+        type: "line", x0: tc, x1: tc, y0: -0.03, y1: 1.03,
+        line: {{ color: C0.texto, width: 1, dash: "dash" }}
+      }});
+      if (te <= 1) formas.push({{
+        type: "line", x0: -0.3, x1: 10.4, y0: te, y1: te,
+        line: {{ color: C0.texto, width: 1, dash: "dash" }}
+      }});
+
+      const C = window.temaColores
+        ? window.temaColores()
+        : {{ fondo: "#161b22", texto: "#e6edf3", linea: "#30363d" }};
+
+      const layout = {{
+        height: 520,
+        paper_bgcolor: C.fondo, plot_bgcolor: C.fondo,
+        font: {{ color: C.texto, family: "IBM Plex Mono, monospace", size: 12 }},
+        xaxis: {{ title: {{ text: T.eje_cvss }}, range: [-0.3, 10.4], dtick: 2, gridcolor: C.linea }},
+        yaxis: {{ title: {{ text: T.eje_epss }}, range: [-0.03, 1.03], gridcolor: C.linea }},
+        legend: {{ orientation: "h", y: 1.15, bgcolor: "rgba(0,0,0,0)" }},
+        margin: {{ l: 60, r: 30, t: 60, b: 50 }},
+        shapes: formas
+      }};
+
+      if (primera) Plotly.newPlot(el, traces, layout, {{ displayModeBar: false, responsive: true }});
+      else Plotly.react(el, traces, layout);
+
+      const cob = r.kev ? (r.tp / r.kev * 100) : 0;
+      const pre = r.remediados ? (r.tp / r.remediados * 100) : 0;
+      document.getElementById("sim-trabajo").textContent   = r.remediados.toLocaleString("en-US");
+      document.getElementById("sim-cobertura").textContent = cob.toFixed(1) + "%";
+      document.getElementById("sim-precision").textContent = pre.toFixed(2) + "%";
+      document.getElementById("sim-escapan").textContent   = (r.kev - r.tp).toLocaleString("en-US");
+      document.getElementById("sim-vc").textContent = tc > 10 ? "—" : tc.toFixed(1);
+      document.getElementById("sim-ve").textContent = te > 1 ? "—" : te.toFixed(2);
+    }}
+
+    window.addEventListener("cambio-tema", function () {{ pintar(false); }});
+    [sc, se].forEach(function (s) {{ s.addEventListener("input", function () {{ pintar(false); }}); }});
+    sk.addEventListener("change", function () {{ pintar(false); }});
+    pintar(true);
+  }});
+}})();
+</script>
+""")
+```

@@ -73,6 +73,16 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
+// Aplica el tema guardado ANTES de pintar, para que no haya parpadeo.
+(function () {
+  try {
+    if (localStorage.getItem("tema") === "claro") {
+      document.documentElement.classList.add("light");
+    }
+  } catch (e) { /* almacenamiento bloqueado: se queda el tema oscuro */ }
+})();
+</script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -410,6 +420,167 @@ ul.task-list li input[type="checkbox"] {
 </div>
 
 
+<script>
+// Navegacion bilingue.
+// Convencion: cada pagina ES tiene su gemela con sufijo "-en".
+//   index.html <-> index-en.html, demo.html <-> demo-en.html, ...
+// 1. Dentro de un idioma, el navbar mantiene ese idioma.
+// 2. Los botones ES / EN llevan a la gemela de la pagina ACTUAL.
+(function () {
+  var PAGES = ["index", "demo", "about", "virstat", "triage"];
+
+  var file = (location.pathname.split("/").pop() || "index.html");
+  var base = file.replace(/\.html$/, "") || "index";
+  var isEN = /-en$/.test(base);
+  var stem = base.replace(/-en$/, "");
+
+  // Si la pagina no es parte del sitio bilingue, no tocar nada.
+  if (PAGES.indexOf(stem) === -1) return;
+
+  var links = Array.prototype.slice.call(
+    document.querySelectorAll(".navbar a.nav-link, .navbar a.navbar-brand")
+  );
+
+  // Los selectores de idioma se identifican por su texto.
+  var toggles = links.filter(function (a) {
+    var t = (a.textContent || "").trim();
+    return t === "ES" || t === "EN";
+  });
+  toggles.forEach(function (a) {
+    a.setAttribute("data-lang-toggle", (a.textContent || "").trim());
+  });
+
+  // 1. Mantener el idioma en el resto de enlaces del navbar.
+  links.forEach(function (a) {
+    if (a.hasAttribute("data-lang-toggle")) return;
+    var h = a.getAttribute("href");
+    if (!h || /^(https?:|mailto:|#)/.test(h)) return;
+
+    var f = h.split("/").pop().replace(/\.html$/, "");
+    var s = f.replace(/-en$/, "");
+    if (PAGES.indexOf(s) === -1) return;
+
+    a.setAttribute("href", "./" + (isEN ? s + "-en" : s) + ".html");
+  });
+
+  // 2. Los botones de idioma apuntan a la gemela de esta pagina.
+  toggles.forEach(function (a) {
+    var lang = a.getAttribute("data-lang-toggle");
+    var wantsEN = lang === "EN";
+    a.setAttribute("href", "./" + stem + (wantsEN ? "-en" : "") + ".html");
+
+    var activo = wantsEN === isEN;
+    a.classList.toggle("active", activo);
+    a.setAttribute("aria-current", activo ? "page" : "false");
+  });
+
+  // 3. Coherencia para lectores de pantalla y buscadores.
+  document.documentElement.setAttribute("lang", isEN ? "en" : "es");
+})();
+</script>
+<script>
+// Tema claro / oscuro en todo el sitio.
+// - Crea el boton si la pagina no lo trae (el CV ya lo incluye en su plantilla).
+// - Recuerda la eleccion entre paginas (localStorage).
+// - Reajusta las graficas Plotly, que llevan sus colores incrustados.
+(function () {
+  var LUNA = "🌙", SOL = "☀️";
+
+  function esClaro() {
+    return document.documentElement.classList.contains("light") ||
+           document.body.classList.contains("light");
+  }
+
+  // Colores vivos del tema, leidos del CSS (unica fuente de verdad).
+  window.temaColores = function () {
+    var cs = getComputedStyle(document.body);
+    var v = function (n, alt) { return (cs.getPropertyValue(n) || alt).trim(); };
+    return {
+      fondo:  v("--bg2", "#161b22"),
+      texto:  v("--text", "#e6edf3"),
+      linea:  v("--border", "#30363d"),
+      tenue:  v("--muted", "#8b949e"),
+      claro:  esClaro()
+    };
+  };
+
+  function ajustarGraficas() {
+    if (!window.Plotly) return;
+    var c = window.temaColores();
+    document.querySelectorAll(".js-plotly-plot").forEach(function (el) {
+      try {
+        Plotly.relayout(el, {
+          paper_bgcolor: c.fondo,
+          plot_bgcolor: c.fondo,
+          "font.color": c.texto,
+          "xaxis.gridcolor": c.linea,
+          "xaxis.zerolinecolor": c.linea,
+          "yaxis.gridcolor": c.linea,
+          "yaxis.zerolinecolor": c.linea,
+          "legend.font.color": c.texto
+        });
+        // El texto al final de las barras tambien lleva color fijo.
+        var n = (el.data || []).length;
+        if (n) Plotly.restyle(el, { "textfont.color": c.texto }, Array.from({length: n}, function (_, i) { return i; }));
+      } catch (e) { /* una grafica que falle no debe romper el resto */ }
+    });
+  }
+
+  function aplicar(claro, guardar) {
+    document.documentElement.classList.toggle("light", claro);
+    document.body.classList.toggle("light", claro);
+    var btn = document.getElementById("theme-toggle");
+    if (btn) {
+      btn.textContent = claro ? SOL : LUNA;
+      btn.setAttribute("aria-label", claro ? "Cambiar a tema oscuro" : "Cambiar a tema claro");
+      btn.setAttribute("aria-pressed", claro ? "true" : "false");
+    }
+    if (guardar) {
+      try { localStorage.setItem("tema", claro ? "claro" : "oscuro"); } catch (e) {}
+    }
+    ajustarGraficas();
+    // El simulador se redibuja solo al oir esto.
+    window.dispatchEvent(new CustomEvent("cambio-tema"));
+  }
+
+  function iniciar() {
+    var btn = document.getElementById("theme-toggle");
+    if (!btn) {
+      btn = document.createElement("button");
+      btn.id = "theme-toggle";
+      btn.type = "button";
+      btn.title = "Cambiar tema";
+      document.body.appendChild(btn);
+    } else {
+      // El CV trae su propio manejador: lo sustituimos para no duplicar el toggle.
+      var limpio = btn.cloneNode(true);
+      btn.parentNode.replaceChild(limpio, btn);
+      btn = limpio;
+    }
+
+    btn.addEventListener("click", function () {
+      aplicar(!esClaro(), true);
+      btn.classList.remove("switching");
+      void btn.offsetWidth;          // reinicia la animacion
+      btn.classList.add("switching");
+    });
+
+    var guardado;
+    try { guardado = localStorage.getItem("tema"); } catch (e) {}
+    aplicar(guardado === "claro", false);
+
+    // Plotly puede tardar en dibujar: reajusta un par de veces al inicio.
+    setTimeout(ajustarGraficas, 600);
+    setTimeout(ajustarGraficas, 2000);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", iniciar);
+  } else {
+    iniciar();
+  }
+})();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

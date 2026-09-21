@@ -1,0 +1,101 @@
+```{python}
+#| label: idioma
+#| echo: false
+
+# Cadenas visibles de las graficas, version ESPANOL.
+# Editar aqui cambia los textos sin tocar el codigo de _fig/.
+L = {
+    # --- carga de datos ---
+    "carga_kev":      "KEV     catálogo {v} ({d})",
+    "carga_epss":     "EPSS    modelo {v} ({d})",
+    "carga_universo": "Universo analizado: {n:,} CVEs con CVSS y EPSS",
+    "carga_activa":   "De ellos, en explotación activa (KEV): {n:,}",
+
+    # --- ejes comunes ---
+    "eje_cvss":       "CVSS base score (impacto)",
+    "eje_epss":       "EPSS (probabilidad de explotación)",
+    "eje_epss_30d":   "EPSS (probabilidad de explotación a 30 días)",
+
+    # --- dispersion ---
+    "disp_sin_kev":   "CVE sin explotación conocida",
+    "disp_con_kev":   "En KEV (explotado activamente)",
+    "disp_umbral":    "umbral «crítico» CVSS 9.0",
+
+    # --- mapas de calor ---
+    "heat_colorbar":  "% en KEV",
+    "heat_hover_n":   "CVSS %{x} · EPSS %{y}<br>%{customdata:,} CVEs<extra></extra>",
+    "heat_hover_kev": "CVSS %{x} · EPSS %{y}<br>%{z:.1f}% en KEV<br>%{customdata:,} CVEs<extra></extra>",
+
+    # --- cifras clave ---
+    "cifras_crit":    "CVEs con CVSS >= 9.0 ............ {n:,}  ({p:.1f}% del universo)",
+    "cifras_expl":    "  de ellos, realmente explotados  {n:,}  ({p:.2f}%)",
+    "cifras_epss":    "  EPSS mediano de ese grupo ..... {v:.4f}",
+    "cifras_kev":     "CVEs en KEV ..................... {n:,}",
+    "cifras_kev9":    "  con CVSS < 9.0 ................ {n:,}  ({p:.1f}%)",
+    "cifras_kev7":    "  con CVSS < 7.0 ................ {n:,}  ({p:.1f}%)",
+
+    # --- estrategias ---
+    "estr_eje":       "CVEs que obliga a remediar (escala logarítmica)",
+    "estr_cols":      ["Estrategia", "CVEs a remediar", "Cobertura del KEV", "Precisión"],
+    "estr_comp_a":    "CVSS >= 9    → {n:>7,} CVEs para cubrir {p:.1f}% del KEV",
+    "estr_comp_b":    "EPSS >= 0.10 → {n:>7,} CVEs para cubrir {p:.1f}% del KEV",
+    "estr_comp_res":  "Priorizar por probabilidad: {t:.1f}x menos trabajo, {c:.1f}x más cobertura.",
+
+    # --- ATT&CK ---
+    "attack_puente":  "CVEs del KEV que alcanzan una técnica ATT&CK: {n:,} de {tot:,} ({p:.1f}%)",
+    "attack_tecn":    "Técnicas ATT&CK distintas alcanzadas: {n}",
+    "attack_eje":     "CVEs del KEV asociados",
+    "cwe_eje":        "CVEs en KEV",
+
+    # --- ransomware ---
+    "rans_si":        "Uso confirmado en ransomware",
+    "rans_no":        "Sin uso conocido",
+    "rans_total":     "CVEs del KEV con uso confirmado en ransomware: {n:,} ({p:.1f}%)",
+    "rans_medianas":  "  CVSS mediano {c:.1f} · EPSS mediano {e:.3f}",
+    "rans_bajo9":     "  con CVSS < 9.0: {n:,} ({p:.1f}%)",
+
+    # --- rubrica ---
+    "rub_cols": ["Prioridad", "Plazo", "Criterio de entrada", "Acción"],
+    "rub_filas": [
+        ["P0 — Inmediato", "24–48 h", "En KEV, o uso confirmado en ransomware",
+         "Parchear o aislar. Sin parche disponible: control compensatorio documentado."],
+        ["P1 — Urgente", "7 días", "EPSS ≥ 0.10 y expuesto a internet",
+         "Entra al sprint actual, con responsable asignado."],
+        ["P2 — Planificado", "30 días", "CVSS ≥ 7 e interno, o EPSS entre 0.01 y 0.10",
+         "Backlog priorizado, agrupado por componente para reducir costo."],
+        ["P3 — Aceptado", "Revisión trimestral", "CVSS alto pero EPSS < 0.01 y sin exposición",
+         "Riesgo aceptado y firmado. Se reevalúa si cambia el EPSS o entra al KEV."],
+    ],
+
+    # --- ejemplo de aplicacion: ransomware ---
+    "emb_eje":        "CVEs (escala logarítmica)",
+    "emb_pasos":      ["Todas las vulnerabilidades con CVSS y EPSS",
+                       "En explotación activa (catálogo KEV)",
+                       "Con uso confirmado en ransomware"],
+    "rans_comp_r":    "Con uso en ransomware ({n})   CVSS mediano {c:.1f} · EPSS mediano {e:.3f}",
+    "rans_comp_o":    "Resto del KEV ({n:,})         CVSS mediano {c:.1f} · EPSS mediano {e:.3f}",
+    "rans_lectura":   "La severidad no los distingue; la probabilidad de explotación sí.",
+    "rans_ciegos":    "De los {n} de ransomware, {m} ({p:.0f}%) tienen CVSS < 9: un filtro de «solo críticos» no los vería.",
+    "rans_epss":      "En cambio, {p:.0f}% supera EPSS 0.10.",
+
+    # --- simulador interactivo ---
+    "sim_titulo":     "Ajusta la política y observa a quién alcanza",
+    "sim_cvss":       "Remediar si CVSS ≥",
+    "sim_epss":       "…o si EPSS ≥",
+    "sim_kev":        "Incluir siempre el catálogo KEV",
+    "sim_g_tp":       "Explotado y remediado",
+    "sim_g_fn":       "Explotado y NO remediado",
+    "sim_g_fp":       "Remediado sin explotación conocida",
+    "sim_g_tn":       "Ni explotado ni remediado",
+    "sim_m_trabajo":  "CVEs a remediar",
+    "sim_m_cobertura":"Cobertura del KEV",
+    "sim_m_precision":"Precisión",
+    "sim_m_escapan":  "Explotados que se escapan",
+    "sim_nota":       "Muestra de {n:,} CVEs sin explotación conocida + los {k:,} del KEV completo.",
+
+    # --- reproducibilidad ---
+    "repro_fecha":    "Análisis regenerado el {d}",
+    "repro_datos":    "KEV {kev} · EPSS {epss} · {n:,} CVEs",
+    "repro_fuentes":  "Fuentes: nvd.nist.gov · first.org/epss · cisa.gov/kev · capec.mitre.org",
+}
+```

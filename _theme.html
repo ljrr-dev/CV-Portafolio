@@ -1,0 +1,103 @@
+<script>
+// Tema claro / oscuro en todo el sitio.
+// - Crea el boton si la pagina no lo trae (el CV ya lo incluye en su plantilla).
+// - Recuerda la eleccion entre paginas (localStorage).
+// - Reajusta las graficas Plotly, que llevan sus colores incrustados.
+(function () {
+  var LUNA = "🌙", SOL = "☀️";
+
+  function esClaro() {
+    return document.documentElement.classList.contains("light") ||
+           document.body.classList.contains("light");
+  }
+
+  // Colores vivos del tema, leidos del CSS (unica fuente de verdad).
+  window.temaColores = function () {
+    var cs = getComputedStyle(document.body);
+    var v = function (n, alt) { return (cs.getPropertyValue(n) || alt).trim(); };
+    return {
+      fondo:  v("--bg2", "#161b22"),
+      texto:  v("--text", "#e6edf3"),
+      linea:  v("--border", "#30363d"),
+      tenue:  v("--muted", "#8b949e"),
+      claro:  esClaro()
+    };
+  };
+
+  function ajustarGraficas() {
+    if (!window.Plotly) return;
+    var c = window.temaColores();
+    document.querySelectorAll(".js-plotly-plot").forEach(function (el) {
+      try {
+        Plotly.relayout(el, {
+          paper_bgcolor: c.fondo,
+          plot_bgcolor: c.fondo,
+          "font.color": c.texto,
+          "xaxis.gridcolor": c.linea,
+          "xaxis.zerolinecolor": c.linea,
+          "yaxis.gridcolor": c.linea,
+          "yaxis.zerolinecolor": c.linea,
+          "legend.font.color": c.texto
+        });
+        // El texto al final de las barras tambien lleva color fijo.
+        var n = (el.data || []).length;
+        if (n) Plotly.restyle(el, { "textfont.color": c.texto }, Array.from({length: n}, function (_, i) { return i; }));
+      } catch (e) { /* una grafica que falle no debe romper el resto */ }
+    });
+  }
+
+  function aplicar(claro, guardar) {
+    document.documentElement.classList.toggle("light", claro);
+    document.body.classList.toggle("light", claro);
+    var btn = document.getElementById("theme-toggle");
+    if (btn) {
+      btn.textContent = claro ? SOL : LUNA;
+      btn.setAttribute("aria-label", claro ? "Cambiar a tema oscuro" : "Cambiar a tema claro");
+      btn.setAttribute("aria-pressed", claro ? "true" : "false");
+    }
+    if (guardar) {
+      try { localStorage.setItem("tema", claro ? "claro" : "oscuro"); } catch (e) {}
+    }
+    ajustarGraficas();
+    // El simulador se redibuja solo al oir esto.
+    window.dispatchEvent(new CustomEvent("cambio-tema"));
+  }
+
+  function iniciar() {
+    var btn = document.getElementById("theme-toggle");
+    if (!btn) {
+      btn = document.createElement("button");
+      btn.id = "theme-toggle";
+      btn.type = "button";
+      btn.title = "Cambiar tema";
+      document.body.appendChild(btn);
+    } else {
+      // El CV trae su propio manejador: lo sustituimos para no duplicar el toggle.
+      var limpio = btn.cloneNode(true);
+      btn.parentNode.replaceChild(limpio, btn);
+      btn = limpio;
+    }
+
+    btn.addEventListener("click", function () {
+      aplicar(!esClaro(), true);
+      btn.classList.remove("switching");
+      void btn.offsetWidth;          // reinicia la animacion
+      btn.classList.add("switching");
+    });
+
+    var guardado;
+    try { guardado = localStorage.getItem("tema"); } catch (e) {}
+    aplicar(guardado === "claro", false);
+
+    // Plotly puede tardar en dibujar: reajusta un par de veces al inicio.
+    setTimeout(ajustarGraficas, 600);
+    setTimeout(ajustarGraficas, 2000);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", iniciar);
+  } else {
+    iniciar();
+  }
+})();
+</script>

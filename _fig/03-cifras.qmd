@@ -1,0 +1,12 @@
+```{python}
+#| label: cifras-clave
+crit = df[df.cvss >= 9.0]
+k    = df[df.in_kev]
+print(L["cifras_crit"].format(n=len(crit), p=len(crit) / len(df) * 100))
+print(L["cifras_expl"].format(n=crit.in_kev.sum(), p=crit.in_kev.mean() * 100))
+print(L["cifras_epss"].format(v=crit.epss.median()))
+print()
+print(L["cifras_kev"].format(n=len(k)))
+print(L["cifras_kev9"].format(n=(k.cvss < 9).sum(), p=(k.cvss < 9).mean() * 100))
+print(L["cifras_kev7"].format(n=(k.cvss < 7).sum(), p=(k.cvss < 7).mean() * 100))
+```

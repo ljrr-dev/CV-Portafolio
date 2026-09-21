@@ -1,0 +1,43 @@
+```{python}
+#| label: puente
+nvd_cwe = dict(zip(cves.cve, cves.cwes.fillna("")))
+k2 = kev.copy()
+k2["cwe_all"] = [
+    (str(r.cwes) if pd.notna(r.cwes) else "") or nvd_cwe.get(r.cve, "")
+    for r in k2.itertuples()
+]
+ex = k2.assign(cwe=k2.cwe_all.str.split(";")).explode("cwe")
+ex = ex[ex.cwe.astype(str).str.startswith("CWE-")]
+mapped = ex.merge(brid, on="cwe", how="inner")
+
+print(L["attack_puente"].format(n=mapped.cve.nunique(), tot=len(kev),
+                                p=mapped.cve.nunique() / len(kev) * 100))
+print(L["attack_tecn"].format(n=mapped.technique.nunique()))
+```
+
+```{python}
+#| label: g-attack
+top = (mapped.groupby(["technique", "technique_name"]).cve.nunique()
+       .sort_values(ascending=False).head(12).reset_index())
+top["etiqueta"] = top.technique + " · " + top.technique_name.str.slice(0, 26)
+
+fig = go.Figure(go.Bar(
+    y=top.etiqueta, x=top.cve, orientation="h",
+    marker=dict(color=top.cve, colorscale=[[0, "#1f6feb"], [1, WARN]]),
+    text=top.cve, textposition="outside", textfont_color="#e6edf3"))
+fig.update_layout(height=470, xaxis_title=L["attack_eje"], yaxis_title="",
+                  yaxis=dict(autorange="reversed"), showlegend=False,
+                  margin=dict(l=250, r=50))
+fig.show()
+```
+
+```{python}
+#| label: g-cwe
+tc = ex.cwe.value_counts().head(10).reset_index()
+tc.columns = ["cwe", "n"]
+fig = go.Figure(go.Bar(y=tc.cwe, x=tc.n, orientation="h", marker_color=ACCENT,
+                       text=tc.n, textposition="outside", textfont_color="#e6edf3"))
+fig.update_layout(height=380, xaxis_title=L["cwe_eje"], yaxis_title="",
+                  yaxis=dict(autorange="reversed"), margin=dict(l=110, r=50))
+fig.show()
+```

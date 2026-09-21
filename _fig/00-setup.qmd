@@ -1,0 +1,45 @@
+```{python}
+#| label: carga
+import json
+import numpy as np
+import pandas as pd
+import plotly.graph_objects as go
+import plotly.io as pio
+from IPython.display import Markdown
+
+meta = json.load(open("data/meta.json"))
+
+# Tema oscuro coherente con el resto del sitio
+pio.templates["cv"] = go.layout.Template(layout=dict(
+    paper_bgcolor="#161b22", plot_bgcolor="#161b22",
+    font=dict(color="#e6edf3", family="IBM Plex Mono, monospace", size=12),
+    xaxis=dict(gridcolor="#30363d", zerolinecolor="#30363d"),
+    yaxis=dict(gridcolor="#30363d", zerolinecolor="#30363d"),
+    legend=dict(bgcolor="rgba(0,0,0,0)"),
+    margin=dict(l=60, r=30, t=50, b=50),
+))
+pio.templates.default = "cv"
+ACCENT, WARN, OK, MUTED = "#58a6ff", "#f85149", "#3fb950", "#8b949e"
+
+
+def md_table(d):
+    """Renderiza un DataFrame como tabla Markdown (hereda el CSS del sitio)."""
+    cab = "| " + " | ".join(map(str, d.columns)) + " |"
+    sep = "|" + "|".join(["---"] * len(d.columns)) + "|"
+    fil = ["| " + " | ".join(map(str, r)) + " |" for r in d.itertuples(index=False)]
+    return Markdown("\n".join([cab, sep, *fil]))
+
+
+cves = pd.read_csv("data/cves.csv.gz")
+epss = pd.read_csv("data/epss.csv.gz")
+kev  = pd.read_csv("data/kev.csv.gz")
+brid = pd.read_csv("data/cwe_attack.csv.gz")
+
+df = cves.merge(epss, on="cve", how="inner")
+df["in_kev"] = df.cve.isin(set(kev.cve))
+
+print(L["carga_kev"].format(v=meta["kev_version"], d=meta["kev_date"]))
+print(L["carga_epss"].format(v=meta["epss_model"], d=meta["epss_date"]))
+print(L["carga_universo"].format(n=len(df)))
+print(L["carga_activa"].format(n=df.in_kev.sum()))
+```

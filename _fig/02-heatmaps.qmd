@@ -1,0 +1,46 @@
+```{python}
+#| label: g-heat-densidad
+EPSS_EDGES = [0, 1e-3, 1e-2, 5e-2, 0.10, 0.30, 0.60, 1.01]
+EPSS_LABS  = ["< 0.1%", "0.1 – 1%", "1 – 5%", "5 – 10%", "10 – 30%", "30 – 60%", "> 60%"]
+CVSS_EDGES = [0, 4, 6, 7, 8, 9, 9.5, 10.01]
+CVSS_LABS  = ["0 – 4", "4 – 6", "6 – 7", "7 – 8", "8 – 9", "9 – 9.5", "9.5 – 10"]
+
+g = df.copy()
+g["eb"] = pd.cut(g.epss, bins=EPSS_EDGES, labels=EPSS_LABS, include_lowest=True)
+g["cb"] = pd.cut(g.cvss, bins=CVSS_EDGES, labels=CVSS_LABS, include_lowest=True)
+
+conteo = g.pivot_table(index="eb", columns="cb", values="cve",
+                       aggfunc="count", observed=False).fillna(0)
+
+fig = go.Figure(go.Heatmap(
+    z=np.log10(conteo.values + 1), x=CVSS_LABS, y=EPSS_LABS,
+    customdata=conteo.values,
+    text=[[f"{int(v):,}" if v else "" for v in fila] for fila in conteo.values],
+    texttemplate="%{text}", textfont=dict(size=11, color="#e6edf3"),
+    colorscale=[[0, "#0d1117"], [.35, "#12355b"], [.7, "#1f6feb"], [1, "#58a6ff"]],
+    hovertemplate=L["heat_hover_n"],
+    showscale=False, xgap=2, ygap=2))
+fig.update_layout(height=430, xaxis_title=L["eje_cvss"], yaxis_title=L["eje_epss"],
+                  margin=dict(l=110, t=30))
+fig.show()
+```
+
+```{python}
+#| label: g-heat-kev
+tasa = g.pivot_table(index="eb", columns="cb", values="in_kev",
+                     aggfunc="mean", observed=False) * 100
+
+fig = go.Figure(go.Heatmap(
+    z=tasa.values, x=CVSS_LABS, y=EPSS_LABS,
+    customdata=conteo.values,
+    text=[[f"{v:.1f}%" if not np.isnan(v) else "" for v in fila] for fila in tasa.values],
+    texttemplate="%{text}", textfont=dict(size=11, color="#e6edf3"),
+    colorscale=[[0, "#0d1117"], [.25, "#1f6feb"], [.6, "#d29922"], [1, "#f85149"]],
+    hovertemplate=L["heat_hover_kev"],
+    colorbar=dict(title=dict(text=L["heat_colorbar"], side="right"),
+                  outlinewidth=0, tickfont=dict(color="#8b949e")),
+    xgap=2, ygap=2))
+fig.update_layout(height=430, xaxis_title=L["eje_cvss"], yaxis_title=L["eje_epss"],
+                  margin=dict(l=110, t=30))
+fig.show()
+```

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Demo Virstat – Lu | Dev &amp; Data</title>
+<title>Demos – Lu | Dev &amp; Data</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -73,6 +73,16 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
+// Aplica el tema guardado ANTES de pintar, para que no haya parpadeo.
+(function () {
+  try {
+    if (localStorage.getItem("tema") === "claro") {
+      document.documentElement.classList.add("light");
+    }
+  } catch (e) { /* almacenamiento bloqueado: se queda el tema oscuro */ }
+})();
+</script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -139,8 +149,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Demo Virstat</h1>
-<p class="subtitle lead">Seguimiento y análisis de jugadas a partir de video</p>
+<h1 class="title">Demos</h1>
+<p class="subtitle lead">Trabajo técnico con datos y código, reproducible de punta a punta</p>
 </div>
 
 
@@ -158,44 +168,201 @@ ul.task-list li input[type="checkbox"] {
 
 
 <div class="demo-intro">
-<p>Clips generados con <strong>Virstat</strong>: detección y trazado de trayectorias sobre video deportivo real. Sin audio — pulsa play en cualquiera.</p>
+<p>Conoce más de mi trabajo, a continuación presento trabajo de análisis aplicado a estrategias de seguridad digital y una muestra reciente de el uso de datos para contar historias, aplicado al contexto de la producción deportiva.</p>
 </div>
-<div class="clip-grid">
-<div class="clip">
-<video controls="" preload="none" src="assets/clips/penalscore.mp4" poster="assets/clips/penalscore.jpg" playsinline="">
-</video>
-<p><span class="clip-title">Penal convertido</span></p>
+<div class="demo-grid">
+<div class="demo-card">
+<div class="demo-card-tag">
+<p>Seguridad · Análisis de datos</p>
 </div>
-<div class="clip">
-<video controls="" preload="none" src="assets/clips/penalFAIL.mp4" poster="assets/clips/penalFAIL.jpg" playsinline="">
-</video>
-<p><span class="clip-title">Penal fallado — trayectoria desviada</span></p>
+<section id="triage-de-vulnerabilidades-con-datos" class="level3 demo-card-title">
+<h3 class="demo-card-title anchored" data-anchor-id="triage-de-vulnerabilidades-con-datos"><a href="./triage.html">Triage de vulnerabilidades con datos</a></h3>
+<p>Priorizar por severidad es el estándar de facto, este análisis integra la posibilidad del ataque al análisis para entender la deuda técnica como riesgo. El análisis cruza 373,000 CVEs con probabilidad de explotación, explotación confirmada y técnicas de ataque, y termina en una rúbrica de priorización aplicable.</p>
+<div class="demo-card-meta">
+<p><span class="tag">NVD</span> <span class="tag">EPSS</span> <span class="tag">CISA KEV</span> <span class="tag">MITRE ATT&amp;CK</span> <span class="tag">Python</span> <span class="tag">Plotly</span></p>
 </div>
-<div class="clip">
-<video controls="" preload="none" src="assets/clips/penalFAIL2.mp4" poster="assets/clips/penalFAIL2.jpg" playsinline="">
-</video>
-<p><span class="clip-title">Penal fallado — segunda toma</span></p>
+<p><a href="./triage.html" class="demo-card-link">Ver el análisis →</a></p>
+</section>
 </div>
-<div class="clip">
-<video controls="" preload="none" src="assets/clips/triples_v1.mp4" poster="assets/clips/triples_v1.jpg" playsinline="">
-</video>
-<p><span class="clip-title">Triples — baloncesto</span></p>
+<div class="demo-card">
+<div class="demo-card-tag">
+<p>Visión por computadora · Video</p>
 </div>
-<div class="clip">
-<video controls="" preload="none" src="assets/clips/tiros.mp4" poster="assets/clips/tiros.jpg" playsinline="">
-</video>
-<p><span class="clip-title">Secuencia de tiros</span></p>
+<section id="virstat-análisis-de-video-deportivo" class="level3 demo-card-title">
+<h3 class="demo-card-title anchored" data-anchor-id="virstat-análisis-de-video-deportivo"><a href="./virstat.html">Virstat: análisis de video deportivo</a></h3>
+<p>Detección y trazado de trayectorias sobre jugadas reales: penales, tiros de campo, triples y softball. Seis clips cortos que muestran el seguimiento cuadro a cuadro sobre transmisiones de video. Se desarrollo una librería para la generación de clips de manera rápida para mejorar repeticiones en entornos televisivos, así como graficado en tiempo real con videomapeo sobre señales de video.</p>
+<div class="demo-card-meta">
+<p><span class="tag">Tracking</span> <span class="tag">Gráficos deportivos</span> <span class="tag">.NET</span> <span class="tag">Video NDI</span> <span class="tag">Python</span> <span class="tag">YOLO</span></p>
 </div>
-<div class="clip">
-<video controls="" preload="none" src="assets/clips/softball_estela.mp4" poster="assets/clips/softball_estela.jpg" playsinline="">
-</video>
-<p><span class="clip-title">Softball — estela de la bola</span></p>
+<p><a href="./virstat.html" class="demo-card-link">Ver los clips →</a></p>
+</section>
 </div>
 </div>
 
 
 
 </main> <!-- /main -->
+<script>
+// Navegacion bilingue.
+// Convencion: cada pagina ES tiene su gemela con sufijo "-en".
+//   index.html <-> index-en.html, demo.html <-> demo-en.html, ...
+// 1. Dentro de un idioma, el navbar mantiene ese idioma.
+// 2. Los botones ES / EN llevan a la gemela de la pagina ACTUAL.
+(function () {
+  var PAGES = ["index", "demo", "about", "virstat", "triage"];
+
+  var file = (location.pathname.split("/").pop() || "index.html");
+  var base = file.replace(/\.html$/, "") || "index";
+  var isEN = /-en$/.test(base);
+  var stem = base.replace(/-en$/, "");
+
+  // Si la pagina no es parte del sitio bilingue, no tocar nada.
+  if (PAGES.indexOf(stem) === -1) return;
+
+  var links = Array.prototype.slice.call(
+    document.querySelectorAll(".navbar a.nav-link, .navbar a.navbar-brand")
+  );
+
+  // Los selectores de idioma se identifican por su texto.
+  var toggles = links.filter(function (a) {
+    var t = (a.textContent || "").trim();
+    return t === "ES" || t === "EN";
+  });
+  toggles.forEach(function (a) {
+    a.setAttribute("data-lang-toggle", (a.textContent || "").trim());
+  });
+
+  // 1. Mantener el idioma en el resto de enlaces del navbar.
+  links.forEach(function (a) {
+    if (a.hasAttribute("data-lang-toggle")) return;
+    var h = a.getAttribute("href");
+    if (!h || /^(https?:|mailto:|#)/.test(h)) return;
+
+    var f = h.split("/").pop().replace(/\.html$/, "");
+    var s = f.replace(/-en$/, "");
+    if (PAGES.indexOf(s) === -1) return;
+
+    a.setAttribute("href", "./" + (isEN ? s + "-en" : s) + ".html");
+  });
+
+  // 2. Los botones de idioma apuntan a la gemela de esta pagina.
+  toggles.forEach(function (a) {
+    var lang = a.getAttribute("data-lang-toggle");
+    var wantsEN = lang === "EN";
+    a.setAttribute("href", "./" + stem + (wantsEN ? "-en" : "") + ".html");
+
+    var activo = wantsEN === isEN;
+    a.classList.toggle("active", activo);
+    a.setAttribute("aria-current", activo ? "page" : "false");
+  });
+
+  // 3. Coherencia para lectores de pantalla y buscadores.
+  document.documentElement.setAttribute("lang", isEN ? "en" : "es");
+})();
+</script>
+<script>
+// Tema claro / oscuro en todo el sitio.
+// - Crea el boton si la pagina no lo trae (el CV ya lo incluye en su plantilla).
+// - Recuerda la eleccion entre paginas (localStorage).
+// - Reajusta las graficas Plotly, que llevan sus colores incrustados.
+(function () {
+  var LUNA = "🌙", SOL = "☀️";
+
+  function esClaro() {
+    return document.documentElement.classList.contains("light") ||
+           document.body.classList.contains("light");
+  }
+
+  // Colores vivos del tema, leidos del CSS (unica fuente de verdad).
+  window.temaColores = function () {
+    var cs = getComputedStyle(document.body);
+    var v = function (n, alt) { return (cs.getPropertyValue(n) || alt).trim(); };
+    return {
+      fondo:  v("--bg2", "#161b22"),
+      texto:  v("--text", "#e6edf3"),
+      linea:  v("--border", "#30363d"),
+      tenue:  v("--muted", "#8b949e"),
+      claro:  esClaro()
+    };
+  };
+
+  function ajustarGraficas() {
+    if (!window.Plotly) return;
+    var c = window.temaColores();
+    document.querySelectorAll(".js-plotly-plot").forEach(function (el) {
+      try {
+        Plotly.relayout(el, {
+          paper_bgcolor: c.fondo,
+          plot_bgcolor: c.fondo,
+          "font.color": c.texto,
+          "xaxis.gridcolor": c.linea,
+          "xaxis.zerolinecolor": c.linea,
+          "yaxis.gridcolor": c.linea,
+          "yaxis.zerolinecolor": c.linea,
+          "legend.font.color": c.texto
+        });
+        // El texto al final de las barras tambien lleva color fijo.
+        var n = (el.data || []).length;
+        if (n) Plotly.restyle(el, { "textfont.color": c.texto }, Array.from({length: n}, function (_, i) { return i; }));
+      } catch (e) { /* una grafica que falle no debe romper el resto */ }
+    });
+  }
+
+  function aplicar(claro, guardar) {
+    document.documentElement.classList.toggle("light", claro);
+    document.body.classList.toggle("light", claro);
+    var btn = document.getElementById("theme-toggle");
+    if (btn) {
+      btn.textContent = claro ? SOL : LUNA;
+      btn.setAttribute("aria-label", claro ? "Cambiar a tema oscuro" : "Cambiar a tema claro");
+      btn.setAttribute("aria-pressed", claro ? "true" : "false");
+    }
+    if (guardar) {
+      try { localStorage.setItem("tema", claro ? "claro" : "oscuro"); } catch (e) {}
+    }
+    ajustarGraficas();
+    // El simulador se redibuja solo al oir esto.
+    window.dispatchEvent(new CustomEvent("cambio-tema"));
+  }
+
+  function iniciar() {
+    var btn = document.getElementById("theme-toggle");
+    if (!btn) {
+      btn = document.createElement("button");
+      btn.id = "theme-toggle";
+      btn.type = "button";
+      btn.title = "Cambiar tema";
+      document.body.appendChild(btn);
+    } else {
+      // El CV trae su propio manejador: lo sustituimos para no duplicar el toggle.
+      var limpio = btn.cloneNode(true);
+      btn.parentNode.replaceChild(limpio, btn);
+      btn = limpio;
+    }
+
+    btn.addEventListener("click", function () {
+      aplicar(!esClaro(), true);
+      btn.classList.remove("switching");
+      void btn.offsetWidth;          // reinicia la animacion
+      btn.classList.add("switching");
+    });
+
+    var guardado;
+    try { guardado = localStorage.getItem("tema"); } catch (e) {}
+    aplicar(guardado === "claro", false);
+
+    // Plotly puede tardar en dibujar: reajusta un par de veces al inicio.
+    setTimeout(ajustarGraficas, 600);
+    setTimeout(ajustarGraficas, 2000);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", iniciar);
+  } else {
+    iniciar();
+  }
+})();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

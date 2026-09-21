@@ -1,0 +1,53 @@
+---
+title: "Demos"
+subtitle: "Technical work with data and code, reproducible end to end"
+format:
+  html:
+    page-layout: article
+    toc: false
+---
+
+::: {.demo-intro}
+A closer look at my work: an analysis applied to digital security strategy, and a recent sample of
+using data to tell stories in the context of sports production.
+:::
+
+::: {.demo-grid}
+
+::: {.demo-card}
+::: {.demo-card-tag}
+Security · Data analysis
+:::
+### [Vulnerability triage, driven by data](triage-en.qmd) {.demo-card-title}
+
+Prioritising by severity is the de facto standard. This analysis brings the likelihood of attack
+into the picture, so technical debt can be read as risk. It cross-references 373,000 CVEs with
+exploitation probability, confirmed exploitation and attack techniques, ending in a usable
+prioritisation rubric.
+
+::: {.demo-card-meta}
+[NVD]{.tag} [EPSS]{.tag} [CISA KEV]{.tag} [MITRE ATT&CK]{.tag} [Python]{.tag} [Plotly]{.tag}
+:::
+
+[See the analysis →](triage-en.qmd){.demo-card-link}
+:::
+
+::: {.demo-card}
+::: {.demo-card-tag}
+Computer vision · Video
+:::
+### [Virstat: sports video analysis](virstat-en.qmd) {.demo-card-title}
+
+Detecting and tracing trajectories over real plays: penalties, field goals, three-pointers and
+softball. Six short clips showing frame-by-frame tracking over broadcast video. I built a library
+to generate clips quickly, to improve replays in television environments, along with real-time
+plotting and video mapping over live signals.
+
+::: {.demo-card-meta}
+[Tracking]{.tag} [Sports graphics]{.tag} [.NET]{.tag} [NDI video]{.tag} [Python]{.tag} [YOLO]{.tag}
+:::
+
+[See the clips →](virstat-en.qmd){.demo-card-link}
+:::
+
+:::

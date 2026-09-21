@@ -1,0 +1,40 @@
+```{python}
+#| label: g-estrategias
+total_kev = int(df.in_kev.sum())
+estrategias = {
+    "CVSS ≥ 9":           df.cvss >= 9,
+    "CVSS ≥ 7":           df.cvss >= 7,
+    "EPSS ≥ 0.10":        df.epss >= 0.10,
+    "EPSS ≥ 0.50":        df.epss >= 0.50,
+    "KEV":                df.in_kev,
+    "KEV ∪ EPSS ≥ 0.10":  df.in_kev | (df.epss >= 0.10),
+}
+res = pd.DataFrame([{
+    "estrategia": nom,
+    "arreglas": int(sel.sum()),
+    "cobertura": df[sel].in_kev.sum() / total_kev * 100,
+    "precision": df[sel].in_kev.mean() * 100,
+} for nom, sel in estrategias.items()])
+
+fig = go.Figure(go.Bar(
+    y=res.estrategia, x=res.arreglas, orientation="h",
+    marker_color=ACCENT, text=[f"{v:,}" for v in res.arreglas],
+    textposition="outside", textfont_color="#e6edf3"))
+fig.update_layout(height=360, xaxis_title=L["estr_eje"],
+                  xaxis=dict(type="log", range=[3, 5.55],
+                             tickvals=[1000, 5000, 20000, 50000, 200000],
+                             ticktext=["1k", "5k", "20k", "50k", "200k"]),
+                  showlegend=False, margin=dict(l=150),
+                  yaxis=dict(autorange="reversed"))
+fig.show()
+```
+
+```{python}
+#| label: tabla-estrategias
+tabla = res.copy()
+tabla["arreglas"]  = tabla.arreglas.map(lambda v: f"{v:,}")
+tabla["cobertura"] = tabla.cobertura.map(lambda v: f"{v:.1f}%")
+tabla["precision"] = tabla.precision.map(lambda v: f"{v:.2f}%")
+tabla.columns = L["estr_cols"]
+md_table(tabla)
+```

@@ -1,0 +1,51 @@
+---
+title: "Clips Virstat"
+subtitle: "Seguimiento y análisis de jugadas a partir de video"
+format:
+  html:
+    page-layout: article
+    toc: false
+---
+
+::: {.demo-intro}
+Clips generados con **Virstat**: detección y trazado de trayectorias sobre
+video deportivo real. Sin audio — pulsa play en cualquiera.
+:::
+
+::: {.clip-grid}
+
+::: {.clip}
+<video controls preload="none" src="assets/clips/penalscore.mp4" poster="assets/clips/penalscore.jpg" playsinline></video>
+[Penal convertido]{.clip-title}
+:::
+
+::: {.clip}
+<video controls preload="none" src="assets/clips/penalFAIL.mp4" poster="assets/clips/penalFAIL.jpg" playsinline></video>
+[Penal fallado — trayectoria desviada]{.clip-title}
+:::
+
+::: {.clip}
+<video controls preload="none" src="assets/clips/penalFAIL2.mp4" poster="assets/clips/penalFAIL2.jpg" playsinline></video>
+[Penal fallado — segunda toma]{.clip-title}
+:::
+
+::: {.clip}
+<video controls preload="none" src="assets/clips/triples_v1.mp4" poster="assets/clips/triples_v1.jpg" playsinline></video>
+[Triples — baloncesto]{.clip-title}
+:::
+
+::: {.clip}
+<video controls preload="none" src="assets/clips/tiros.mp4" poster="assets/clips/tiros.jpg" playsinline></video>
+[Secuencia de tiros]{.clip-title}
+:::
+
+::: {.clip}
+<video controls preload="none" src="assets/clips/softball_estela.mp4" poster="assets/clips/softball_estela.jpg" playsinline></video>
+[Softball — estela de la bola sobre señal en vido NDI]{.clip-title}
+:::
+
+:::
+
+::: {.demo-nav}
+[← Todas las demos](demo.qmd) · [Triage de vulnerabilidades con datos →](triage.qmd)
+:::

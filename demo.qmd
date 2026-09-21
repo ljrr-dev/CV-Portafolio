@@ -1,6 +1,6 @@
 ---
-title: "Demo Virstat"
-subtitle: "Seguimiento y análisis de jugadas a partir de video"
+title: "Demos"
+subtitle: "Trabajo técnico con datos y código, reproducible de punta a punta"
 format:
   html:
     page-layout: article
@@ -8,40 +8,47 @@ format:
 ---
 
 ::: {.demo-intro}
-Clips generados con **Virstat**: detección y trazado de trayectorias sobre
-video deportivo real. Sin audio — pulsa play en cualquiera.
+Conoce más de mi trabajo, a continuación presento trabajo de análisis aplicado a estrategias de seguridad digital y 
+una muestra reciente de el uso de datos para contar historias, aplicado al contexto de la producción deportiva.
 :::
 
-::: {.clip-grid}
+::: {.demo-grid}
 
-::: {.clip}
-<video controls preload="none" src="assets/clips/penalscore.mp4" poster="assets/clips/penalscore.jpg" playsinline></video>
-[Penal convertido]{.clip-title}
+::: {.demo-card}
+::: {.demo-card-tag}
+Seguridad · Análisis de datos
+:::
+### [Triage de vulnerabilidades con datos](triage.qmd) {.demo-card-title}
+
+Priorizar por severidad es el estándar de facto, este análisis integra la posibilidad del ataque al análisis
+para entender la deuda técnica como riesgo. El análisis cruza 373,000 CVEs con probabilidad de
+explotación, explotación confirmada y técnicas de ataque, y termina en una
+rúbrica de priorización aplicable.
+
+::: {.demo-card-meta}
+[NVD]{.tag} [EPSS]{.tag} [CISA KEV]{.tag} [MITRE ATT&CK]{.tag} [Python]{.tag} [Plotly]{.tag}
 :::
 
-::: {.clip}
-<video controls preload="none" src="assets/clips/penalFAIL.mp4" poster="assets/clips/penalFAIL.jpg" playsinline></video>
-[Penal fallado — trayectoria desviada]{.clip-title}
+[Ver el análisis →](triage.qmd){.demo-card-link}
 :::
 
-::: {.clip}
-<video controls preload="none" src="assets/clips/penalFAIL2.mp4" poster="assets/clips/penalFAIL2.jpg" playsinline></video>
-[Penal fallado — segunda toma]{.clip-title}
+::: {.demo-card}
+::: {.demo-card-tag}
+Visión por computadora · Video
+:::
+### [Virstat: análisis de video deportivo](virstat.qmd) {.demo-card-title}
+
+Detección y trazado de trayectorias sobre jugadas reales: penales, tiros de
+campo, triples y softball. Seis clips cortos que muestran el seguimiento
+cuadro a cuadro sobre transmisiones de video.
+Se desarrollo una librería para la generación de clips de manera rápida para mejorar repeticiones
+en entornos televisivos, así como graficado en tiempo real con videomapeo sobre señales de video.
+
+::: {.demo-card-meta}
+[Tracking]{.tag} [Gráficos deportivos]{.tag} [.NET]{.tag} [Video NDI]{.tag} [Python]{.tag} [YOLO]{.tag}
 :::
 
-::: {.clip}
-<video controls preload="none" src="assets/clips/triples_v1.mp4" poster="assets/clips/triples_v1.jpg" playsinline></video>
-[Triples — baloncesto]{.clip-title}
-:::
-
-::: {.clip}
-<video controls preload="none" src="assets/clips/tiros.mp4" poster="assets/clips/tiros.jpg" playsinline></video>
-[Secuencia de tiros]{.clip-title}
-:::
-
-::: {.clip}
-<video controls preload="none" src="assets/clips/softball_estela.mp4" poster="assets/clips/softball_estela.jpg" playsinline></video>
-[Softball — estela de la bola]{.clip-title}
+[Ver los clips →](virstat.qmd){.demo-card-link}
 :::
 
 :::

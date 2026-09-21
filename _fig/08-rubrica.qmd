@@ -1,0 +1,5 @@
+```{python}
+#| label: rubrica
+rubrica = pd.DataFrame(L["rub_filas"], columns=L["rub_cols"])
+md_table(rubrica)
+```

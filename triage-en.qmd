@@ -1,0 +1,182 @@
+---
+title: "Vulnerability triage, driven by data"
+subtitle: "CVSS · EPSS · KEV · MITRE ATT&CK — from 373,000 CVEs to an actionable list"
+format:
+  html:
+    page-layout: article
+    code-fold: true
+    code-tools: true
+    toc: true
+    toc-depth: 2
+execute:
+  echo: true
+  warning: false
+jupyter: python3
+---
+
+{{< include _lang/en.qmd >}}
+
+::: {.demo-intro}
+**The questions:**
+In a shifting digital landscape, how do we identify the risks that matter most to operations?
+How do we turn data and findings into actions that make products and digital environments safer?
+How do we align business needs with security?
+
+This analysis aims to help guide those decisions using what the data tells us.
+
+:::
+
+## The data
+
+The key word here is **risk**, so it is worth stepping back to look at the concept. Its more
+physical sense works well: how **severe** it would be if something happened, and how **likely**
+it is to happen at all — keeping in mind that some risks are unacceptable however rarely they
+occur.
+
+It is tempting to picture elaborate attack chains, run by a determined, well-resourced adversary,
+when most of the time what hits us are attacks of opportunity.
+
+That is why this analysis draws on four sources, each answering something different.
+
+| Source | Answers | Volume |
+|---|---|---|
+| **NVD** (CVSS) | How bad *would it be* if they exploited me? | ~373k CVEs |
+| **EPSS** (FIRST) | How likely am I to be exploited within 30 days? | ~377k CVEs |
+| **KEV** (CISA) | What is being exploited *right now*? | ~1.7k CVEs |
+| **ATT&CK** (MITRE) | What does the attacker *do* with it? | via CWE → CAPEC |
+
+{{< include _fig/00-setup.qmd >}}
+
+## 1. Severity is not the whole story
+
+Each dot is a CVE, a published vulnerability. The horizontal axis measures how severe it would be;
+the vertical one, how likely it is to be exploited.
+
+**The two are related, but far less than you would expect.** Severe CVEs draw attention, since
+they promise a bigger reward for the attacker. Even so, we see plenty of exploitation among
+vulnerabilities nobody would call critical — more evidence that much of what happens is
+opportunistic.
+
+{{< include _fig/01-scatter.qmd >}}
+
+{{< include _fig/02-heatmaps.qmd >}}
+
+{{< include _fig/03-cifras.qmd >}}
+
+::: {.callout-important}
+## What severity leaves out
+
+Almost two thirds of what attackers are exploiting **today** scores below CVSS 9.0.
+
+And the other way round: of the tens of thousands of CVEs at CVSS ≥ 9, barely more than **1%** is
+being exploited.
+
+Neither figure invalidates severity. What they suggest is that mitigation plans meant to produce
+useful action should look at a wider picture than severity alone.
+:::
+
+## 2. The strategic cost
+
+The question stops being **how many CVEs to fix**, or **above what severity to fix**, and becomes
+how to cover the likely and the severe at once, drawing a clear line at the risks we are not
+willing to accept.
+
+If attackers look for opportunity among the easy and the severe, the defence needs the same lens.
+
+{{< include _fig/04-estrategias.qmd >}}
+
+{{< include _fig/04b-simulador.qmd >}}
+
+Read as quadrants, the upper half — the more likely — is where real exploitation concentrates,
+and the top-right corner adds the greatest severity to that. Moving the dials shows how much work
+each line we draw would cost.
+
+Comparing the two most common policies:
+
+{{< include _fig/05-comparacion.qmd >}}
+
+## 3. What the attacker does: MITRE ATT&CK
+
+CVSS and EPSS speak to *how much* and *how likely*. Neither says **what happens next**. For that,
+each CVE is chained to the ATT&CK model through its underlying weakness:
+
+```
+CVE  →  CWE  →  CAPEC  →  ATT&CK technique
+       (NVD)   (MITRE)       (MITRE)
+```
+
+{{< include _fig/06-attack.qmd >}}
+
+::: {.callout-warning}
+## Beyond the numbers
+
+The difference between intelligence and information lies in interpretation — in applying judgement
+case by case.
+
+The CVE → CWE → CAPEC → ATT&CK chain reaches about a third of the vulnerabilities we know to be
+exploited, so what follows is a thread to weave into a strategy, not a closed answer.
+
+It is useful for reading *trends* about which offensive capabilities a vulnerability inventory
+enables, which can then be checked against technical inventories and the backlog. The limits of
+the method are precisely what makes threat intelligence work valuable, once it translates into
+concrete action.
+:::
+
+Among the vulnerabilities actually being exploited, the most frequent weaknesses are not exotic:
+input validation, command injection, out-of-bounds writes, *use-after-free*, unsafe
+deserialisation. **They are the same classes of error as two decades ago.** Much of it is caught
+by SAST in the pipeline, and prevented earlier still through acceptance criteria in development.
+That is where the value of building security into development shows — and the cost of not doing so.
+
+## 4. A worked example: ransomware
+
+So far this describes a method. Let us walk through a case that applies it.
+
+Deciding what is unacceptable — beyond probability — belongs to the business and to whoever keeps
+operations running. Say we settle on ransomware as a risk to mitigate at all costs.
+
+The KEV catalog flags which vulnerabilities have confirmed use in ransomware campaigns, so the
+path is direct:
+
+{{< include _fig/07-ransomware.qmd >}}
+
+From everything published, we land on a three-figure list. It is not yet a list of actions, since
+the specifics of each case call for their own assessment, but it is the raw material a team needs
+to build one: cross it against their inventory, see what applies, set deadlines.
+
+Two things worth reading closely.
+
+The first is that **severity does not help you find them**. Median CVSS is the same for the
+vulnerabilities used by ransomware as for the rest of the catalog. Were severity the criterion,
+more than half of them would stay off the radar. Probability of exploitation, on the other hand,
+separates them clearly.
+
+The second is that **many are not new**. About a third were published before 2020, and Microsoft,
+Fortinet, Oracle and Ivanti account for a sizeable share. This looks less like chasing
+freshly discovered threats and more like a conversation about technical debt and platform
+upgrades.
+
+Every organisation is best served by looking at the data and weighing it against its own needs and
+resources, to build safer products and digital environments.
+
+## Reproducibility
+
+{{< include _fig/09-repro.qmd >}}
+
+Everything comes from public data and regenerates with a single command
+(`python scripts/fetch_data.py`). No client information, private system or real environment was
+used.
+
+::: {.nota-ia}
+**On the use of AI.** Pulling the four sources, the code that joins them and the charts were built
+with AI assistance: that work is mechanical and repeatable, and it is just as well that it is.
+The rest is not delegated — what to ask, what to cross-reference, where to move the threshold,
+what it means for two medians to be identical, and how far a claim holds without overstating it.
+Reading the data, the judgement and the writing are human, limitations included. 
+:::
+
+---
+
+::: {.demo-nav}
+[← All demos](demo-en.qmd) · [Virstat: sports video analysis →](virstat-en.qmd)
+:::

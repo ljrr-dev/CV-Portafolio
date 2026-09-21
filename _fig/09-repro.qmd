@@ -1,0 +1,7 @@
+```{python}
+#| label: repro
+from datetime import date
+print(L["repro_fecha"].format(d=date.today().isoformat()))
+print(L["repro_datos"].format(kev=meta["kev_version"], epss=meta["epss_model"], n=len(df)))
+print(L["repro_fuentes"])
+```

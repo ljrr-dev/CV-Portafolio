@@ -1,0 +1,192 @@
+---
+title: "Triage de vulnerabilidades con datos"
+subtitle: "CVSS · EPSS · KEV · MITRE ATT&CK — de 373,000 CVEs a una lista accionable"
+format:
+  html:
+    page-layout: article
+    code-fold: true
+    code-tools: true
+    toc: true
+    toc-depth: 2
+execute:
+  echo: true
+  warning: false
+jupyter: python3
+---
+
+{{< include _lang/es.qmd >}}
+
+::: {.demo-intro}
+**Las preguntas:**
+Ante un entorno digital cambiante, ¿cómo identificamos los riesgos prioritarios para la operación?
+¿Cómo interpretamos los datos y hallazgos para convertirlos en acciones que construyan productos
+y entornos digitales más seguros?
+¿Cómo alineamos las necesidades del negocio con la seguridad?
+
+Este análisis busca ayudar a orientar la toma de decisiones a partir de lo que nos dicen los datos.
+
+:::
+
+## Los datos
+
+La palabra clave aquí es **riesgo**, así que vale la pena dar un paso atrás y entender el concepto.
+Podemos guiarnos por su sentido más físico: qué tan **grave** sería que algo pasara y qué tan
+**probable** es que pase, sin perder de vista que hay riesgos cuya gravedad es inaceptable aunque
+ocurran pocas veces.
+
+Es tentador pensar en cadenas de ataque elaboradas, con un adversario dedicado y con recursos,
+cuando la mayoría de las veces nos afectan ataques de oportunidad.
+
+Por eso este análisis toma cuatro fuentes, cada una aportando una respuesta diferente.
+
+| Fuente | Responde | Volumen |
+|---|---|---|
+| **NVD** (CVSS) | ¿Qué tan grave *sería* si me explotan? | ~373k CVEs |
+| **EPSS** (FIRST) | ¿Qué probabilidad hay de que me exploten en 30 días? | ~377k CVEs |
+| **KEV** (CISA) | ¿Qué se está explotando *ahora mismo*? | ~1.7k CVEs |
+| **ATT&CK** (MITRE) | ¿Qué *hace* el atacante con esto? | vía CWE → CAPEC |
+
+{{< include _fig/00-setup.qmd >}}
+
+## 1. La severidad no es toda la historia
+
+Cada punto es un CVE, es decir, una vulnerabilidad publicada. El eje horizontal mide qué tan grave
+sería; el vertical, qué tan probable es que la exploten.
+
+**Las dos cosas se relacionan, pero bastante menos de lo que uno esperaría.** Los CVE severos
+atraen atención, porque suponen una recompensa más valiosa para el atacante. Aun así, también
+vemos mucha explotación en vulnerabilidades que nadie clasificaría como críticas, lo que refuerza
+la idea de que buena parte de lo que ocurre son ataques de oportunidad.
+
+{{< include _fig/01-scatter.qmd >}}
+
+{{< include _fig/02-heatmaps.qmd >}}
+
+{{< include _fig/03-cifras.qmd >}}
+
+::: {.callout-important}
+## Lo que la severidad deja fuera
+
+Casi dos tercios de lo que los atacantes están explotando **hoy** tiene CVSS por debajo de 9.0.
+
+Y en sentido inverso: de las decenas de miles de CVE con CVSS ≥ 9, apenas algo más del **1%**
+está siendo explotado.
+
+Ninguna de las dos cifras invalida la severidad. Lo que sugieren es que, al armar planes de
+mitigación que se traduzcan en acciones útiles para la operación, conviene mirar un panorama
+más amplio que la gravedad por sí sola.
+:::
+
+## 2. El costo estratégico
+
+La pregunta deja de ser **cuántos CVE arreglar**, o **a partir de qué severidad arreglar**, y pasa
+a ser cómo cubrir a la vez lo probable y lo grave, trazando una línea clara en los riesgos que no
+estamos dispuestos a aceptar.
+
+Si los atacantes buscan la oportunidad entre lo fácil y lo severo, la defensa necesita mirar con
+esa misma lente.
+
+{{< include _fig/04-estrategias.qmd >}}
+
+{{< include _fig/04b-simulador.qmd >}}
+
+Visto por cuadrantes, la mitad superior —lo más probable— es donde se concentra la explotación
+real, y la esquina superior derecha suma a eso la mayor gravedad. Moviendo los diales se ve cuánto
+trabajo cuesta cada línea que decidamos trazar.
+
+Comparando las dos políticas más habituales:
+
+{{< include _fig/05-comparacion.qmd >}}
+
+## 3. Qué hace el atacante: MITRE ATT&CK
+
+CVSS y EPSS dicen *cuánto* y *qué tan probable*. Ninguno dice **qué ocurre
+después**. Para eso se encadena cada CVE con el modelo ATT&CK a través de su
+debilidad subyacente:
+
+```
+CVE  →  CWE  →  CAPEC  →  técnica ATT&CK
+       (NVD)   (MITRE)      (MITRE)
+```
+
+{{< include _fig/06-attack.qmd >}}
+
+::: {.callout-warning}
+## Más allá de las cifras
+
+La diferencia entre inteligencia e información está en la interpretación, en aplicar criterio a
+cada caso concreto.
+
+Por otro lado, la cadena CVE → CWE → CAPEC → técnica ATT&CK alcanza a cerca de un tercio de las
+vulnerabilidades que sabemos explotadas, así que lo que sigue es una línea a incorporar dentro de
+una estrategia, no una respuesta cerrada.
+
+Sirve para leer *tendencias* sobre qué capacidades ofensivas habilita un inventario de
+vulnerabilidades, que a su vez se pueden contrastar con los inventarios técnicos y el backlog.
+Las limitaciones del método son, justamente, lo que da valor a un trabajo de inteligencia de
+amenazas que se traduzca en acciones concretas.
+:::
+
+Entre las vulnerabilidades que sí se están explotando, las debilidades más frecuentes no son
+exóticas: validación de entrada, inyección de comandos, escritura fuera de límites,
+*use-after-free*, deserialización insegura. **Son las mismas clases de error desde hace dos
+décadas.** Buena parte se detecta con SAST en el pipeline, y se previene antes desde los criterios
+de aceptación del desarrollo. Ahí se ve el valor de integrar la seguridad al desarrollo, y el
+costo de no hacerlo.
+
+## 4. Un ejemplo de aplicación: ransomware
+
+Hasta aquí el análisis describe un método. Vamos a ver un caso de aplicación del criterio expuesto.
+
+Es el negocio y el criterio de quienes mantiene la operación definir que es inaceptable más allá de 
+la probabilidad, supongamos que determinamos el Ransomware como un riesgo que debemos mitigar a toda
+costa.
+
+
+El catálogo KEV marca cuáles tienen uso confirmado en campañas de ransomware, así que el recorrido
+es directo:
+
+{{< include _fig/07-ransomware.qmd >}}
+
+De todo el universo publicado se llega a una lista de tres cifras. Aún no tenemos una lista de accionables
+ya que las individualidades de cada caso requieren de su propia evaluación, pero sí es el insumo con el que un equipo puede
+armar la suya: cruzarla con su inventario, ver cuáles le aplican y decidir plazos.
+
+Dos elementos para la interpretación
+
+El primero es que **la severidad no ayuda a encontrarlos**. La mediana de CVSS es la misma en las
+vulnerabilidades usadas por ransomware que en el resto del catálogo. Si el criterio fuera la
+gravedad, más de la mitad de estas quedaría fuera del radar. La probabilidad de explotación, en
+cambio, sí las separa con claridad.
+
+La segunda es que **buena parte no son nuevas**. Alrededor de un tercio se publicó antes de 2020,
+y Microsoft, Fortinet, Oracle e Ivanti concentran una porción importante. Esto se parece menos a
+perseguir amenazas recién descubiertas y más a una conversación sobre deuda técnica y
+actualización de plataformas.
+
+Para cada organización está en su mejor interés analizar los datos, contrastar con sus necesidades y recursos para construir
+un entorno digital y productos más seguros. 
+
+
+## Reproducibilidad
+
+{{< include _fig/09-repro.qmd >}}
+
+Todo parte de datos públicos y se regenera con un comando
+(`python scripts/fetch_data.py`). No se utilizó información de ningún cliente,
+sistema privado ni entorno real.
+
+::: {.nota-ia}
+**Sobre el uso de IA.** La descarga de las cuatro fuentes, el código que las cruza y la
+construcción de las gráficas se hicieron con asistencia de IA: es trabajo mecánico y repetible, y
+conviene que lo sea. Lo demás no se delega: qué preguntar, qué cruzar, dónde mover el umbral, qué
+significa que dos medianas sean idénticas y hasta dónde alcanza una afirmación sin exagerarla. La
+lectura de los datos, el criterio y la redacción son humanos, incluidas las limitaciones que aquí
+se declaran.
+:::
+
+---
+
+::: {.demo-nav}
+[← Todas las demos](demo.qmd) · [Virstat: análisis de video deportivo →](virstat.qmd)
+:::

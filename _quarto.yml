@@ -5,6 +5,9 @@ project:
     - assets/
     - "*.pdf"
 
+execute:
+  freeze: auto
+
 website:
   title: "Lu | Dev & Data"
   navbar:
@@ -29,4 +32,8 @@ format:
   html:
     theme: cosmo
     css: styles.css
+    include-in-header: _theme-head.html
+    include-after-body:
+      - _lang-nav.html
+      - _theme.html
     toc: false

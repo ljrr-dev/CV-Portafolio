@@ -1,0 +1,10 @@
+<script>
+// Aplica el tema guardado ANTES de pintar, para que no haya parpadeo.
+(function () {
+  try {
+    if (localStorage.getItem("tema") === "claro") {
+      document.documentElement.classList.add("light");
+    }
+  } catch (e) { /* almacenamiento bloqueado: se queda el tema oscuro */ }
+})();
+</script>

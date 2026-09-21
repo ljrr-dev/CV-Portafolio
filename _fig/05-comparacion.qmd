@@ -1,0 +1,9 @@
+```{python}
+#| label: comparacion
+a = df[df.cvss >= 9]
+b = df[df.epss >= 0.10]
+print(L["estr_comp_a"].format(n=len(a), p=a.in_kev.sum() / total_kev * 100))
+print(L["estr_comp_b"].format(n=len(b), p=b.in_kev.sum() / total_kev * 100))
+print()
+print(L["estr_comp_res"].format(t=len(a) / len(b), c=b.in_kev.sum() / a.in_kev.sum()))
+```

@@ -1,0 +1,58 @@
+<script>
+// Navegacion bilingue.
+// Convencion: cada pagina ES tiene su gemela con sufijo "-en".
+//   index.html <-> index-en.html, demo.html <-> demo-en.html, ...
+// 1. Dentro de un idioma, el navbar mantiene ese idioma.
+// 2. Los botones ES / EN llevan a la gemela de la pagina ACTUAL.
+(function () {
+  var PAGES = ["index", "demo", "about", "virstat", "triage"];
+
+  var file = (location.pathname.split("/").pop() || "index.html");
+  var base = file.replace(/\.html$/, "") || "index";
+  var isEN = /-en$/.test(base);
+  var stem = base.replace(/-en$/, "");
+
+  // Si la pagina no es parte del sitio bilingue, no tocar nada.
+  if (PAGES.indexOf(stem) === -1) return;
+
+  var links = Array.prototype.slice.call(
+    document.querySelectorAll(".navbar a.nav-link, .navbar a.navbar-brand")
+  );
+
+  // Los selectores de idioma se identifican por su texto.
+  var toggles = links.filter(function (a) {
+    var t = (a.textContent || "").trim();
+    return t === "ES" || t === "EN";
+  });
+  toggles.forEach(function (a) {
+    a.setAttribute("data-lang-toggle", (a.textContent || "").trim());
+  });
+
+  // 1. Mantener el idioma en el resto de enlaces del navbar.
+  links.forEach(function (a) {
+    if (a.hasAttribute("data-lang-toggle")) return;
+    var h = a.getAttribute("href");
+    if (!h || /^(https?:|mailto:|#)/.test(h)) return;
+
+    var f = h.split("/").pop().replace(/\.html$/, "");
+    var s = f.replace(/-en$/, "");
+    if (PAGES.indexOf(s) === -1) return;
+
+    a.setAttribute("href", "./" + (isEN ? s + "-en" : s) + ".html");
+  });
+
+  // 2. Los botones de idioma apuntan a la gemela de esta pagina.
+  toggles.forEach(function (a) {
+    var lang = a.getAttribute("data-lang-toggle");
+    var wantsEN = lang === "EN";
+    a.setAttribute("href", "./" + stem + (wantsEN ? "-en" : "") + ".html");
+
+    var activo = wantsEN === isEN;
+    a.classList.toggle("active", activo);
+    a.setAttribute("aria-current", activo ? "page" : "false");
+  });
+
+  // 3. Coherencia para lectores de pantalla y buscadores.
+  document.documentElement.setAttribute("lang", isEN ? "en" : "es");
+})();
+</script>
